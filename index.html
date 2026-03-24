@@ -356,7 +356,7 @@ tbody tr:hover{background:var(--raised)}
       <div class="verdict-hero none fade-up" id="hero">
         <div class="verdict-layout">
           <div>
-            <div class="verdict-eyebrow" id="hero-date">Tomorrow · —</div>
+            <div class="verdict-eyebrow" id="hero-date">Today · —</div>
             <div class="verdict-temp" id="hero-temp">—<span class="unit">°F</span></div>
             <div class="verdict-sub" id="hero-sub">Run backfill.py to populate data</div>
             <div class="verdict-badge none" id="verdict-badge">
@@ -631,7 +631,7 @@ async function loadAll() {
   const tStr = tomorrow.toISOString().split("T")[0];
   const tLabel = tomorrow.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" });
 
-  document.getElementById("hero-date").textContent = `Tomorrow · ${tLabel}`;
+  document.getElementById("hero-date").textContent = `Today · ${tLabel}`;
 
   const [nowcastRows, skipRows, biasRows, alertRows, histRows, kalshiRows] = await Promise.all([
     sbGet("nowcast_log",          `valid_date=eq.${tStr}&order=created_at.desc&limit=1`),
