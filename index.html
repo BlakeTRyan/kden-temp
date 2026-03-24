@@ -48,126 +48,63 @@ a:hover{text-decoration:underline}
   text-transform:uppercase;color:var(--muted);margin-bottom:1.5rem;
   display:flex;align-items:center;gap:.5rem;
 }
-.login-eyebrow::before{
-  content:'';display:block;width:20px;height:1px;background:var(--muted);
-}
-.login-title{
-  font-family:var(--serif);font-size:42px;font-weight:400;
-  line-height:1.1;color:var(--text);margin-bottom:.5rem;
-}
+.login-eyebrow::before{content:'';display:block;width:20px;height:1px;background:var(--muted)}
+.login-title{font-family:var(--serif);font-size:42px;font-weight:400;line-height:1.1;color:var(--text);margin-bottom:.5rem}
 .login-title em{font-style:italic;color:var(--muted)}
 .login-sub{font-size:13px;color:var(--muted);margin-bottom:2.5rem}
-.login-card{
-  background:var(--surface);border:1px solid var(--border);
-  border-radius:12px;padding:2rem;
-}
+.login-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:2rem}
 .field{margin-bottom:1.25rem}
-.field label{
-  display:block;font-family:var(--mono);font-size:10px;
-  letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
-  margin-bottom:.4rem;
-}
-.field input{
-  width:100%;background:var(--bg);border:1px solid var(--border);
-  border-radius:8px;color:var(--text);font-family:var(--mono);
-  font-size:13px;padding:.7rem .9rem;outline:none;
-  transition:border-color .15s;
-}
+.field label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem}
+.field input{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:var(--mono);font-size:13px;padding:.7rem .9rem;outline:none;transition:border-color .15s}
 .field input:focus{border-color:var(--blue)}
-.btn-login{
-  width:100%;background:var(--blue);color:#000;border:none;
-  border-radius:8px;font-family:var(--mono);font-size:12px;
-  font-weight:600;letter-spacing:.06em;padding:.8rem;
-  cursor:pointer;transition:opacity .15s;margin-top:.25rem;
-}
+.btn-login{width:100%;background:var(--blue);color:#000;border:none;border-radius:8px;font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.06em;padding:.8rem;cursor:pointer;transition:opacity .15s;margin-top:.25rem}
 .btn-login:hover{opacity:.85}
 .btn-login:disabled{opacity:.4;cursor:not-allowed}
-.login-err{
-  color:var(--skip);font-family:var(--mono);font-size:11px;
-  margin-top:.75rem;min-height:16px;text-align:center;
-}
+.login-err{color:var(--skip);font-family:var(--mono);font-size:11px;margin-top:.75rem;min-height:16px;text-align:center}
 
 /* ── APP SHELL ─────────────────────────── */
 #app{display:none}
-
-.topbar{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:.875rem 2rem;border-bottom:1px solid var(--border);
-  background:rgba(13,17,23,.9);backdrop-filter:blur(8px);
-  position:sticky;top:0;z-index:100;
-}
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:.875rem 2rem;border-bottom:1px solid var(--border);background:rgba(13,17,23,.9);backdrop-filter:blur(8px);position:sticky;top:0;z-index:100}
 .topbar-brand{display:flex;align-items:center;gap:.875rem}
 .brand-name{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--text);letter-spacing:.04em}
 .brand-dot{width:6px;height:6px;border-radius:50%;background:var(--go);animation:blink 2s ease infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
-.station-tag{
-  font-family:var(--mono);font-size:10px;color:var(--muted);
-  background:var(--raised);border:1px solid var(--border);
-  border-radius:4px;padding:.15rem .5rem;
-}
+.station-tag{font-family:var(--mono);font-size:10px;color:var(--muted);background:var(--raised);border:1px solid var(--border);border-radius:4px;padding:.15rem .5rem}
 .topbar-right{display:flex;align-items:center;gap:.75rem}
 .topbar-ts{font-family:var(--mono);font-size:10px;color:var(--dim)}
 .topbar-user{font-family:var(--mono);font-size:10px;color:var(--muted)}
-.btn-xs{
-  background:none;border:1px solid var(--border);border-radius:5px;
-  color:var(--muted);font-family:var(--mono);font-size:10px;
-  padding:.25rem .6rem;cursor:pointer;transition:all .15s;
-}
+.btn-xs{background:none;border:1px solid var(--border);border-radius:5px;color:var(--muted);font-family:var(--mono);font-size:10px;padding:.25rem .6rem;cursor:pointer;transition:all .15s}
 .btn-xs:hover{border-color:var(--border2);color:var(--text)}
 .btn-xs.red:hover{border-color:var(--skip-bd);color:var(--skip)}
-
 .page{padding:2rem;max-width:1200px;margin:0 auto}
 
 /* ── VERDICT HERO ──────────────────────── */
-.verdict-hero{
-  position:relative;overflow:hidden;
-  border-radius:16px;padding:2.5rem;margin-bottom:1.5rem;
-  border:1px solid var(--border);background:var(--surface);
-}
+.verdict-hero{position:relative;overflow:hidden;border-radius:16px;padding:2.5rem;margin-bottom:1.5rem;border:1px solid var(--border);background:var(--surface)}
 .verdict-hero.go{border-color:var(--go-bd);background:linear-gradient(135deg,var(--surface) 60%,var(--go-bg))}
 .verdict-hero.skip{border-color:var(--skip-bd);background:linear-gradient(135deg,var(--surface) 60%,var(--skip-bg))}
 .verdict-hero.watch{border-color:var(--watch-bd);background:linear-gradient(135deg,var(--surface) 60%,var(--watch-bg))}
 .verdict-hero.none{border-color:var(--border)}
-
 .verdict-layout{display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:start}
-
-.verdict-eyebrow{
-  font-family:var(--mono);font-size:10px;letter-spacing:.18em;
-  text-transform:uppercase;color:var(--muted);margin-bottom:.75rem;
-}
-.verdict-temp{
-  font-family:var(--serif);font-size:80px;font-weight:400;
-  line-height:.9;letter-spacing:-.02em;margin-bottom:.5rem;
-}
+.verdict-eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:.75rem}
+.verdict-temp{font-family:var(--serif);font-size:80px;font-weight:400;line-height:.9;letter-spacing:-.02em;margin-bottom:.5rem}
 .verdict-temp .unit{font-size:36px;color:var(--muted)}
 .verdict-sub{font-size:13px;color:var(--muted);margin-bottom:1.5rem}
-
-.verdict-badge{
-  display:inline-flex;align-items:center;gap:.5rem;
-  font-family:var(--mono);font-size:11px;font-weight:600;
-  letter-spacing:.08em;padding:.35rem .9rem;border-radius:6px;
-}
+.verdict-badge{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.08em;padding:.35rem .9rem;border-radius:6px}
 .verdict-badge.go  {background:var(--go-bg); color:var(--go);  border:1px solid var(--go-bd)}
 .verdict-badge.skip{background:var(--skip-bg);color:var(--skip);border:1px solid var(--skip-bd)}
 .verdict-badge.watch{background:var(--watch-bg);color:var(--watch);border:1px solid var(--watch-bd)}
 .verdict-badge.none{background:var(--raised);color:var(--muted);border:1px solid var(--border)}
 .badge-dot{width:6px;height:6px;border-radius:50%}
-.go   .badge-dot{background:var(--go);  animation:blink 1.5s infinite}
+.go   .badge-dot{background:var(--go);animation:blink 1.5s infinite}
 .skip .badge-dot{background:var(--skip)}
 .watch .badge-dot{background:var(--watch);animation:blink 1.5s infinite}
-
-/* Right panel of hero */
 .verdict-right{text-align:right;min-width:200px}
 .bucket-label{font-family:var(--mono);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.4rem}
 .bucket-main{font-family:var(--mono);font-size:28px;font-weight:600;color:var(--text);margin-bottom:.25rem}
 .bucket-adj{font-family:var(--mono);font-size:13px;color:var(--muted);margin-bottom:1.25rem}
-
-.kelly-block{}
 .kelly-label{font-family:var(--mono);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.4rem}
 .kelly-val{font-family:var(--mono);font-size:22px;font-weight:600;color:var(--blue)}
 .kelly-sub{font-family:var(--mono);font-size:11px;color:var(--muted)}
-
-/* CI bar */
 .ci-row{margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border)}
 .ci-meta{display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;color:var(--muted);margin-bottom:.4rem}
 .ci-track{height:4px;background:var(--raised);border-radius:2px;position:relative}
@@ -183,29 +120,17 @@ a:hover{text-decoration:underline}
 
 /* ── SKIP RULES ────────────────────────── */
 .section-title{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:.875rem}
-
 .rules-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.75rem;margin-bottom:1.5rem}
-.rule-card{
-  background:var(--surface);border:1px solid var(--border);
-  border-radius:10px;padding:1rem 1.1rem;
-  display:flex;gap:.75rem;align-items:flex-start;
-  transition:border-color .15s;
-}
+.rule-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1rem 1.1rem;display:flex;gap:.75rem;align-items:flex-start;transition:border-color .15s}
 .rule-card.ok      {border-color:var(--border)}
 .rule-card.triggered{border-color:var(--skip-bd);background:var(--skip-bg)}
 .rule-card.warning  {border-color:var(--watch-bd);background:var(--watch-bg)}
-
-.rule-icon{
-  font-size:16px;width:32px;height:32px;border-radius:8px;
-  display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;background:var(--raised);
-}
+.rule-icon{font-size:16px;width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:var(--raised)}
 .rule-card.triggered .rule-icon{background:rgba(248,81,73,.12)}
 .rule-card.warning   .rule-icon{background:rgba(210,153,34,.12)}
-
 .rule-name{font-size:12px;font-weight:500;color:var(--text);margin-bottom:.2rem}
 .rule-value{font-family:var(--mono);font-size:10px}
-.rule-card.ok       .rule-value{color:var(--go)}
+.rule-card.ok        .rule-value{color:var(--go)}
 .rule-card.triggered .rule-value{color:var(--skip)}
 .rule-card.warning   .rule-value{color:var(--watch)}
 
@@ -223,8 +148,6 @@ a:hover{text-decoration:underline}
 .panel{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden}
 .panel-head{padding:.875rem 1.25rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
 .panel-title{font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
-
-/* Alert log */
 .alert-item{display:flex;gap:.875rem;padding:.875rem 1.25rem;border-bottom:1px solid var(--border);align-items:flex-start}
 .alert-item:last-child{border-bottom:none}
 .alert-dot{width:8px;height:8px;border-radius:50%;margin-top:4px;flex-shrink:0}
@@ -239,38 +162,22 @@ a:hover{text-decoration:underline}
 .bet-form-inner{padding:1rem 1.25rem;display:flex;flex-wrap:wrap;gap:.625rem;align-items:flex-end}
 .bf{display:flex;flex-direction:column;gap:.25rem}
 .bf label{font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
-.bf input,.bf select{
-  background:var(--bg);border:1px solid var(--border);border-radius:6px;
-  color:var(--text);font-family:var(--mono);font-size:12px;
-  padding:.35rem .6rem;outline:none;min-width:82px;
-}
+.bf input,.bf select{background:var(--bg);border:1px solid var(--border);border-radius:6px;color:var(--text);font-family:var(--mono);font-size:12px;padding:.35rem .6rem;outline:none;min-width:82px}
 .bf input:focus,.bf select:focus{border-color:var(--blue)}
-.btn-log{
-  background:var(--blue);color:#000;border:none;border-radius:6px;
-  font-family:var(--mono);font-size:11px;font-weight:600;
-  padding:.4rem .9rem;cursor:pointer;
-}
+.btn-log{background:var(--blue);color:#000;border:none;border-radius:6px;font-family:var(--mono);font-size:11px;font-weight:600;padding:.4rem .9rem;cursor:pointer}
 .btn-log:hover{opacity:.85}
 
 /* Bet table */
 .bet-table-wrap{overflow-x:auto}
 table{width:100%;border-collapse:collapse}
-thead th{
-  background:var(--raised);font-family:var(--mono);font-size:9px;
-  letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
-  padding:.625rem 1.25rem;text-align:left;border-bottom:1px solid var(--border);
-  white-space:nowrap;
-}
-tbody td{
-  padding:.75rem 1.25rem;font-family:var(--mono);font-size:12px;
-  border-bottom:1px solid var(--border);
-}
+thead th{background:var(--raised);font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:.625rem 1.25rem;text-align:left;border-bottom:1px solid var(--border);white-space:nowrap}
+tbody td{padding:.75rem 1.25rem;font-family:var(--mono);font-size:12px;border-bottom:1px solid var(--border)}
 tbody tr:last-child td{border-bottom:none}
 tbody tr:hover{background:var(--raised)}
 .pill{display:inline-block;font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:.08em;padding:.15rem .5rem;border-radius:4px}
-.pill.win  {background:rgba(63,185,80,.12); color:var(--go)}
-.pill.loss {background:rgba(248,81,73,.12); color:var(--skip)}
-.pill.skip {background:var(--raised);       color:var(--muted)}
+.pill.win    {background:rgba(63,185,80,.12);color:var(--go)}
+.pill.loss   {background:rgba(248,81,73,.12);color:var(--skip)}
+.pill.skip   {background:var(--raised);color:var(--muted)}
 .pill.pending{background:rgba(88,166,255,.12);color:var(--blue)}
 .pos{color:var(--go)}.neg{color:var(--skip)}
 
@@ -278,8 +185,10 @@ tbody tr:hover{background:var(--raised)}
 .loading{display:flex;align-items:center;justify-content:center;padding:5rem;gap:.75rem;font-family:var(--mono);font-size:11px;color:var(--muted)}
 @keyframes spin{to{transform:rotate(360deg)}}
 .spin{width:14px;height:14px;border:1.5px solid var(--border);border-top-color:var(--blue);border-radius:50%;animation:spin .7s linear infinite}
-
 @keyframes up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.fade-up{animation:up .35s ease both}
+
+/* Kalshi table */
 .kalshi-row{display:grid;grid-template-columns:130px 80px 80px 80px 80px 1fr;gap:0;border-bottom:1px solid var(--border)}
 .kalshi-row:last-child{border-bottom:none}
 .kalshi-row.nowcast-row{background:rgba(88,166,255,.05);border-left:2px solid var(--blue)}
@@ -289,7 +198,6 @@ tbody tr:hover{background:var(--raised)}
 .bar-wrap{width:100%;background:var(--raised);border-radius:2px;height:6px;position:relative;overflow:hidden}
 .bar-mkt{position:absolute;left:0;top:0;height:100%;background:var(--muted);border-radius:2px;transition:width .4s}
 .bar-mdl{position:absolute;left:0;top:0;height:100%;background:var(--blue);border-radius:2px;opacity:.6;transition:width .4s}
-.fade-up{animation:up .35s ease both}
 
 @media(max-width:900px){
   .verdict-layout{grid-template-columns:1fr}
@@ -363,8 +271,7 @@ tbody tr:hover{background:var(--raised)}
               <div class="badge-dot"></div>
               <span id="verdict-text">AWAITING DATA</span>
             </div>
-
-            <div class="ci-row" id="ci-row">
+            <div class="ci-row">
               <div class="ci-meta">
                 <span>80% confidence interval</span>
                 <span id="ci-range">—</span>
@@ -380,8 +287,7 @@ tbody tr:hover{background:var(--raised)}
             <div class="bucket-label">Primary bucket · 70%</div>
             <div class="bucket-main" id="bucket-main">—</div>
             <div class="bucket-adj" id="bucket-adj">Adjacent · 30% → —</div>
-
-            <div class="kelly-block" style="margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid var(--border)">
+            <div style="margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid var(--border)">
               <div class="kelly-label">Half-Kelly · $500 bankroll</div>
               <div class="kelly-val" id="kelly-val">—%</div>
               <div class="kelly-sub" id="kelly-dollar">$— max position</div>
@@ -430,11 +336,9 @@ tbody tr:hover{background:var(--raised)}
             <span style="font-family:var(--mono);font-size:10px;color:var(--muted)" id="kalshi-best-label"></span>
           </div>
           <div id="kalshi-table-wrap">
-            <div class="empty-panel">Loading market data...</div>
+            <div class="empty-panel">No Kalshi data yet — run backfill.py</div>
           </div>
         </div>
-
-        <!-- Best bet callout -->
         <div id="best-bet-card" style="display:none;margin-top:.75rem;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.25rem">
           <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap">
             <div>
@@ -470,18 +374,12 @@ tbody tr:hover{background:var(--raised)}
 
       <!-- ── ALERTS + BET LOG ── -->
       <div class="two-col fade-up" style="animation-delay:.2s">
-
         <div class="panel">
-          <div class="panel-head">
-            <span class="panel-title">Recent alerts</span>
-          </div>
+          <div class="panel-head"><span class="panel-title">Recent alerts</span></div>
           <div id="alert-log"><div class="empty-panel">No alerts yet</div></div>
         </div>
-
         <div class="panel">
-          <div class="panel-head">
-            <span class="panel-title">Log a bet</span>
-          </div>
+          <div class="panel-head"><span class="panel-title">Log a bet</span></div>
           <div class="bet-form-inner">
             <div class="bf"><label>Date</label><input type="date" id="f-date"></div>
             <div class="bf"><label>Bucket</label><input type="text" id="f-bucket" placeholder="82-83"></div>
@@ -522,13 +420,13 @@ tbody tr:hover{background:var(--raised)}
 
 <script>
 // ═══════════════════════════════════════════════════
-// CONFIG — replace with your values
+// CONFIG
 // ═══════════════════════════════════════════════════
 const SB_URL  = "https://tiuganpzargnltkugdnm.supabase.co";
 const SB_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRpdWdhbnB6YXJnbmx0a3VnZG5tIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3NDMyMTcwMywiZXhwIjoyMDg5ODk3NzAzfQ.FEyybWEJY6zMeyXFeBbis4jVY3ixuoCU1d0Awp-y4I4";
 
 // ═══════════════════════════════════════════════════
-// SUPABASE REST (no library — no eval — no CSP issues)
+// SUPABASE REST
 // ═══════════════════════════════════════════════════
 let token = null;
 
@@ -549,11 +447,15 @@ async function sbSignOut() {
 }
 
 async function sbGet(table, qs = "") {
-  const r = await fetch(`${SB_URL}/rest/v1/${table}?${qs}`, {
-    headers: { "apikey": SB_ANON, "Authorization": `Bearer ${token}`, "Accept": "application/json" },
-  });
-  if (!r.ok) return [];
-  return r.json();
+  try {
+    const r = await fetch(`${SB_URL}/rest/v1/${table}?${qs}`, {
+      headers: { "apikey": SB_ANON, "Authorization": `Bearer ${token}`, "Accept": "application/json" },
+    });
+    if (!r.ok) return [];
+    return r.json();
+  } catch (e) {
+    return [];
+  }
 }
 
 async function sbUpsert(table, row, conflict) {
@@ -579,7 +481,6 @@ document.getElementById("refresh-btn").addEventListener("click", loadAll);
 document.getElementById("log-btn").addEventListener("click", logBet);
 document.getElementById("f-date").value = new Date().toISOString().split("T")[0];
 
-// Restore session
 const saved = sessionStorage.getItem("kden_t");
 if (saved) { token = saved; showApp(sessionStorage.getItem("kden_e") || ""); }
 
@@ -620,26 +521,26 @@ function showApp(email) {
 }
 
 // ═══════════════════════════════════════════════════
-// DATA
+// DATA — everything queries TODAY
 // ═══════════════════════════════════════════════════
 async function loadAll() {
   document.getElementById("app-loading").style.display = "flex";
   document.getElementById("app-body").style.display    = "none";
 
-  const tomorrow = new Date();
-  tomorrow.setDate(tomorrow.getDate() + 1);
-  const tStr = tomorrow.toISOString().split("T")[0];
-  const tLabel = tomorrow.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" });
+  // TODAY's date string — matches what backfill.py writes
+  const today  = new Date();
+  const tStr   = today.toISOString().split("T")[0];
+  const tLabel = today.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" });
 
   document.getElementById("hero-date").textContent = `Today · ${tLabel}`;
 
   const [nowcastRows, skipRows, biasRows, alertRows, histRows, kalshiRows] = await Promise.all([
     sbGet("nowcast_log",          `valid_date=eq.${tStr}&order=created_at.desc&limit=1`),
     sbGet("skip_evaluations",     `valid_date=eq.${tStr}&order=evaluated_at.desc&limit=1`),
-    sbGet("seasonal_bias_summary",`source=eq.MOS_MAV&lead_hours=gte.6&lead_hours=lte.36`),
+    sbGet("seasonal_bias_summary", `order=season.asc`),
     sbGet("skip_evaluations",     `order=evaluated_at.desc&limit=8`),
     sbGet("bet_outcomes",         `order=valid_date.desc&limit=25`),
-    sbGet("kalshi_markets", `valid_date=eq.${tStr}&order=created_at.desc&limit=1`).catch(() => []),
+    sbGet("kalshi_markets",       `valid_date=eq.${tStr}&order=created_at.desc&limit=1`),
   ]);
 
   const nowcast  = nowcastRows[0] || null;
@@ -664,12 +565,12 @@ async function loadAll() {
 // RENDER
 // ═══════════════════════════════════════════════════
 function renderHero(n, skipEval) {
-  const hero   = document.getElementById("hero");
-  const badge  = document.getElementById("verdict-badge");
-  const vtext  = document.getElementById("verdict-text");
+  const hero  = document.getElementById("hero");
+  const badge = document.getElementById("verdict-badge");
+  const vtext = document.getElementById("verdict-text");
 
   if (!n) {
-    hero.className = "verdict-hero none fade-up";
+    hero.className  = "verdict-hero none fade-up";
     badge.className = "verdict-badge none";
     vtext.textContent = "AWAITING DATA";
     return;
@@ -692,8 +593,9 @@ function renderHero(n, skipEval) {
 
   // CI bar
   document.getElementById("ci-range").textContent = `${n.ci_low_f}°F – ${n.ci_high_f}°F`;
-  const lo = n.nowcast_f - 15, span = 30;
-  const pct = v => Math.max(2, Math.min(98, ((v - lo) / span) * 100));
+  const lo   = n.nowcast_f - 15;
+  const span = 30;
+  const pct  = v => Math.max(2, Math.min(98, ((v - lo) / span) * 100));
   document.getElementById("ci-fill").style.left  = pct(n.ci_low_f) + "%";
   document.getElementById("ci-fill").style.width = (pct(n.ci_high_f) - pct(n.ci_low_f)) + "%";
   document.getElementById("ci-pin").style.left   = pct(n.nowcast_f) + "%";
@@ -708,11 +610,11 @@ function renderHero(n, skipEval) {
 
 function renderInputCards(n) {
   if (!n) return;
-  document.getElementById("ic-raw").textContent    = (n.raw_mos_f || "—") + (n.raw_mos_f ? "°F" : "");
-  document.getElementById("ic-source").textContent = n.source || "NWS gridded forecast";
-  document.getElementById("ic-bias").textContent   = n.mean_bias_f != null
+  document.getElementById("ic-raw").textContent     = n.raw_mos_f ? n.raw_mos_f + "°F" : "—";
+  document.getElementById("ic-source").textContent  = n.source || "NWS gridded forecast";
+  document.getElementById("ic-bias").textContent    = n.mean_bias_f != null
     ? (n.mean_bias_f >= 0 ? "+" : "") + n.mean_bias_f + "°F" : "—";
-  document.getElementById("ic-season").textContent = (n.season || "—") + " rolling 60-day mean";
+  document.getElementById("ic-season").textContent  = (n.season || "—") + " rolling 60-day mean";
   document.getElementById("ic-samples").textContent = n.n_samples ?? "—";
   document.getElementById("ic-sample-note").textContent = n.n_samples < 20
     ? "⚠ Need 20+ to bet" : "✓ Sufficient for calibration";
@@ -721,24 +623,23 @@ function renderInputCards(n) {
 }
 
 const RULE_DEF = {
-  frontal_passage:    { icon: "🌬", name: "Frontal passage",       note: "NWS BOU AFD scan" },
-  ensemble_spread:    { icon: "📊", name: "Ensemble spread >4°F",  note: "Open-Meteo GFS members" },
-  convective_outlook: { icon: "⛈",  name: "Convective outlook",    note: "NWS CO active alerts" },
-  chinook_event:      { icon: "🏔",  name: "Chinook / wind event",  note: "AFD + wind advisories" },
-  high_pop:           { icon: "🌧",  name: "PoP >30%",              note: "NWS afternoon period" },
-  low_sample:         { icon: "📉",  name: "Bias samples <20",      note: "Internal bias log" },
-  ci_too_wide:        { icon: "📏",  name: "CI spans >2 buckets",   note: "Confidence interval" },
+  frontal_passage:    { icon: "🌬", name: "Frontal passage",      note: "NWS BOU AFD scan" },
+  ensemble_spread:    { icon: "📊", name: "Ensemble spread >4°F", note: "Open-Meteo GFS members" },
+  convective_outlook: { icon: "⛈",  name: "Convective outlook",   note: "NWS CO active alerts" },
+  chinook_event:      { icon: "🏔",  name: "Chinook / wind event", note: "AFD + wind advisories" },
+  high_pop:           { icon: "🌧",  name: "PoP >30%",             note: "NWS afternoon period" },
+  low_sample:         { icon: "📉",  name: "Bias samples <20",     note: "Internal bias log" },
+  ci_too_wide:        { icon: "📏",  name: "CI spans >2 buckets",  note: "Confidence interval" },
 };
 
 function renderSkipRules(skipEval) {
-  const results = (skipEval && skipEval.results_json) || [];
-  const map     = Object.fromEntries(results.map(r => [r.rule_id, r]));
+  const results    = (skipEval && skipEval.results_json) || [];
+  const map        = Object.fromEntries(results.map(r => [r.rule_id, r]));
   const nTriggered = results.filter(r => r.triggered).length;
 
-  document.getElementById("skip-count-label").textContent =
-    nTriggered === 0
-      ? `Skip rules · all clear (${results.length || 7} evaluated)`
-      : `Skip rules · ${nTriggered} triggered`;
+  document.getElementById("skip-count-label").textContent = nTriggered === 0
+    ? `Skip rules · all clear (${results.length || 7} evaluated)`
+    : `Skip rules · ${nTriggered} triggered`;
 
   document.getElementById("rules-grid").innerHTML = Object.entries(RULE_DEF).map(([id, def]) => {
     const r      = map[id];
@@ -761,16 +662,16 @@ function renderSkipRules(skipEval) {
 function renderBias(rows) {
   const seasons = ["DJF","MAM","JJA","SON"];
   const notes   = { DJF:"Winter · chinook risk", MAM:"Spring · hardest season", JJA:"Summer · predictable", SON:"Fall · upslope bias" };
-  const byS = {};
+  const byS     = {};
   rows.forEach(r => { if (!byS[r.season]) byS[r.season] = []; byS[r.season].push(r); });
 
   document.getElementById("bias-row").innerHTML = seasons.map(s => {
     const arr = byS[s];
     if (!arr) return `<div class="bias-card"><div class="bias-season">${s}</div><div class="bias-num flat">—</div><div class="bias-n">no data</div><div class="bias-note">${notes[s]}</div></div>`;
-    const avg = arr.reduce((a,b) => a + parseFloat(b.mean_bias_f), 0) / arr.length;
-    const n   = arr.reduce((a,b) => a + parseInt(b.n_samples), 0);
-    const std = arr.reduce((a,b) => a + parseFloat(b.std_bias_f || 2), 0) / arr.length;
-    const cls = Math.abs(avg) < 0.4 ? "flat" : avg > 0 ? "pos" : "neg";
+    const avg  = arr.reduce((a, b) => a + parseFloat(b.mean_bias_f), 0) / arr.length;
+    const n    = arr.reduce((a, b) => a + parseInt(b.n_samples), 0);
+    const std  = arr.reduce((a, b) => a + parseFloat(b.std_bias_f || 2), 0) / arr.length;
+    const cls  = Math.abs(avg) < 0.4 ? "flat" : avg > 0 ? "pos" : "neg";
     const sign = avg >= 0 ? "+" : "";
     return `<div class="bias-card">
       <div class="bias-season">${s}</div>
@@ -784,7 +685,7 @@ function renderBias(rows) {
 function renderAlerts(rows) {
   if (!rows.length) return;
   document.getElementById("alert-log").innerHTML = rows.map(r => {
-    const ts  = new Date(r.evaluated_at).toLocaleString("en-US", { dateStyle:"short", timeStyle:"short" });
+    const ts  = new Date(r.evaluated_at).toLocaleString("en-US", { dateStyle: "short", timeStyle: "short" });
     const dot = r.skip_triggered ? "r" : r.triggered_count > 0 ? "y" : "g";
     const msg = r.skip_triggered
       ? `🚫 Skip triggered · ${r.triggered_count} rule(s)${r.email_sent ? " · Email sent" : ""}`
@@ -825,15 +726,16 @@ function renderKalshi(row) {
   if (!row || !row.ranges_json || !row.ranges_json.length) {
     ticker.textContent = "—";
     status.textContent = "Run backfill.py to fetch live prices";
-    wrap.innerHTML = '<div class="empty-panel">No Kalshi market data yet · runs automatically with backfill.py</div>';
+    wrap.innerHTML     = '<div class="empty-panel">No Kalshi market data yet · runs automatically with backfill.py</div>';
+    bbCard.style.display = "none";
     return;
   }
 
   ticker.textContent = row.event_ticker || "—";
-  status.textContent = "Live prices · " + new Date(row.created_at).toLocaleTimeString("en-US", {hour:"2-digit",minute:"2-digit"});
+  status.textContent = "Live prices · " + new Date(row.created_at).toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" });
 
   const ranges = row.ranges_json;
-  const maxP   = Math.max(...ranges.map(r => Math.max(r.p_market, r.p_model)));
+  const maxP   = Math.max(...ranges.map(r => Math.max(r.p_market || 0, r.p_model || 0)), 0.01);
 
   const header = `<div class="kalshi-row" style="background:var(--raised)">
     <div class="kalshi-head">Range</div>
@@ -841,22 +743,22 @@ function renderKalshi(row) {
     <div class="kalshi-head" style="text-align:right">Model P</div>
     <div class="kalshi-head" style="text-align:right">Edge</div>
     <div class="kalshi-head" style="text-align:right">Bet</div>
-    <div class="kalshi-head">Probability bar</div>
+    <div class="kalshi-head">Bar</div>
   </div>`;
 
-  const rows = ranges.map(r => {
+  const tableRows = ranges.map(r => {
     const edgeColor = r.edge > 0.04 ? "var(--go)" : r.edge < -0.04 ? "var(--skip)" : "var(--muted)";
     const edgeSign  = r.edge >= 0 ? "+" : "";
     const rowCls    = r.is_nowcast_bucket ? "nowcast-row" : Math.abs(r.edge) >= 0.04 ? "edge-row" : "";
-    const mktW      = Math.round((r.p_market / maxP) * 100);
-    const mdlW      = Math.round((r.p_model  / maxP) * 100);
+    const mktW      = Math.round(((r.p_market || 0) / maxP) * 100);
+    const mdlW      = Math.round(((r.p_model  || 0) / maxP) * 100);
     const price     = r.bet_price ? `$${r.bet_price.toFixed(2)}` : "—";
     const sideLabel = r.bet_side ? `${r.bet_side} ${price}` : "—";
     return `<div class="kalshi-row ${rowCls}">
-      <div class="kalshi-cell" style="font-weight:500">${r.range_str}${r.is_nowcast_bucket ? ' <span style="color:var(--blue);font-size:9px">◀ NOWCAST</span>' : ''}</div>
-      <div class="kalshi-cell" style="justify-content:flex-end">${(r.p_market*100).toFixed(1)}%</div>
-      <div class="kalshi-cell" style="justify-content:flex-end;color:var(--blue)">${(r.p_model*100).toFixed(1)}%</div>
-      <div class="kalshi-cell" style="justify-content:flex-end;color:${edgeColor}">${edgeSign}${(r.edge*100).toFixed(1)}%</div>
+      <div class="kalshi-cell" style="font-weight:500">${r.range_str}${r.is_nowcast_bucket ? ' <span style="color:var(--blue);font-size:9px">◀</span>' : ""}</div>
+      <div class="kalshi-cell" style="justify-content:flex-end">${((r.p_market||0)*100).toFixed(1)}%</div>
+      <div class="kalshi-cell" style="justify-content:flex-end;color:var(--blue)">${((r.p_model||0)*100).toFixed(1)}%</div>
+      <div class="kalshi-cell" style="justify-content:flex-end;color:${edgeColor}">${edgeSign}${((r.edge||0)*100).toFixed(1)}%</div>
       <div class="kalshi-cell" style="justify-content:flex-end;font-size:11px;color:${edgeColor}">${sideLabel}</div>
       <div class="kalshi-cell">
         <div class="bar-wrap">
@@ -867,18 +769,17 @@ function renderKalshi(row) {
     </div>`;
   }).join("");
 
-  wrap.innerHTML = header + rows;
+  wrap.innerHTML = header + tableRows;
 
-  // Best bet callout
   const bb = row.best_bet_json;
   if (bb && Math.abs(bb.edge) >= 0.04) {
     bbCard.style.display = "block";
-    document.getElementById("bb-title").textContent   = `${bb.side} ${bb.range_str}`;
-    document.getElementById("bb-reason").textContent  = bb.reason || "";
-    document.getElementById("bb-price").textContent   = `$${bb.price.toFixed(2)}`;
-    document.getElementById("bb-edge").textContent    = `+${(Math.abs(bb.edge)*100).toFixed(1)}%`;
-    document.getElementById("bb-kelly").textContent   = `${bb.kelly_pct}%`;
-    document.getElementById("bb-dollar").textContent  = `$${bb.kelly_500}`;
+    document.getElementById("bb-title").textContent  = `${bb.side} ${bb.range_str}`;
+    document.getElementById("bb-reason").textContent = bb.reason || "";
+    document.getElementById("bb-price").textContent  = `$${bb.price.toFixed(2)}`;
+    document.getElementById("bb-edge").textContent   = `+${(Math.abs(bb.edge) * 100).toFixed(1)}%`;
+    document.getElementById("bb-kelly").textContent  = `${bb.kelly_pct}%`;
+    document.getElementById("bb-dollar").textContent = `$${bb.kelly_500}`;
     document.getElementById("kalshi-best-label").textContent = `Edge: ${bb.side} ${bb.range_str}`;
   } else {
     bbCard.style.display = "none";
@@ -891,9 +792,9 @@ async function logBet() {
     valid_date:    document.getElementById("f-date").value,
     kalshi_bucket: document.getElementById("f-bucket").value,
     position:      document.getElementById("f-pos").value,
-    contracts:     parseInt(document.getElementById("f-qty").value) || null,
+    contracts:     parseInt(document.getElementById("f-qty").value)    || null,
     entry_price:   parseFloat(document.getElementById("f-price").value) || null,
-    official_high: parseInt(document.getElementById("f-actual").value) || null,
+    official_high: parseInt(document.getElementById("f-actual").value)  || null,
     skip_reason:   document.getElementById("f-skip").value || null,
     outcome:       document.getElementById("f-pos").value === "SKIP" ? "SKIP" : "PENDING",
   };
