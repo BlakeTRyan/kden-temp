@@ -639,7 +639,7 @@ async function loadAll() {
     sbGet("seasonal_bias_summary",`source=eq.MOS_MAV&lead_hours=gte.6&lead_hours=lte.36`),
     sbGet("skip_evaluations",     `order=evaluated_at.desc&limit=8`),
     sbGet("bet_outcomes",         `order=valid_date.desc&limit=25`),
-    sbGet("kalshi_markets",       `valid_date=eq.${tStr}&order=created_at.desc&limit=1`),
+    sbGet("kalshi_markets", `valid_date=eq.${tStr}&order=created_at.desc&limit=1`).catch(() => []),
   ]);
 
   const nowcast  = nowcastRows[0] || null;
