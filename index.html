@@ -633,13 +633,13 @@ async function loadAll() {
 
   document.getElementById("hero-date").textContent = `Tomorrow · ${tLabel}`;
 
-  const [nowcastRows, skipRows, biasRows, alertRows, histRows, kalshiRows] = await Promise.all([
+  const [nowcastRows, skipRows, biasRows, alertRows, histRows] = await Promise.all([
     sbGet("nowcast_log",          `valid_date=eq.${tStr}&order=created_at.desc&limit=1`),
     sbGet("skip_evaluations",     `valid_date=eq.${tStr}&order=evaluated_at.desc&limit=1`),
     sbGet("seasonal_bias_summary",`source=eq.MOS_MAV&lead_hours=gte.6&lead_hours=lte.36`),
     sbGet("skip_evaluations",     `order=evaluated_at.desc&limit=8`),
     sbGet("bet_outcomes",         `order=valid_date.desc&limit=25`),
-    sbGet("kalshi_markets", `valid_date=eq.${tStr}&order=created_at.desc&limit=1`).catch(() => []),
+    sbGet("kalshi_markets",       `valid_date=eq.${tStr}&order=created_at.desc&limit=1`),
   ]);
 
   const nowcast  = nowcastRows[0] || null;
