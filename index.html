@@ -3,325 +3,485 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KDEN Temp Intelligence</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<title>KDEN · Temp Intelligence</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg:#0a0c10;--bg2:#111418;--bg3:#181d24;--border:#1e2530;
-  --text:#e8edf5;--muted:#6b7a8d;--accent:#00d4aa;--accent2:#0099ff;
-  --warn:#ff6b35;--danger:#ff3b55;--gold:#f0c040;
-  --mono:'Space Mono',monospace;--sans:'DM Sans',sans-serif;
+  --bg:      #0d1117;
+  --surface: #161b22;
+  --raised:  #1c2330;
+  --border:  rgba(255,255,255,0.07);
+  --border2: rgba(255,255,255,0.12);
+  --text:    #e6edf3;
+  --muted:   #7d8590;
+  --dim:     #3d444d;
+  --go:      #3fb950;
+  --go-bg:   rgba(63,185,80,0.08);
+  --go-bd:   rgba(63,185,80,0.2);
+  --skip:    #f85149;
+  --skip-bg: rgba(248,81,73,0.08);
+  --skip-bd: rgba(248,81,73,0.2);
+  --watch:   #d29922;
+  --watch-bg:rgba(210,153,34,0.08);
+  --watch-bd:rgba(210,153,34,0.2);
+  --blue:    #58a6ff;
+  --teal:    #39d353;
+  --serif:   'Instrument Serif', Georgia, serif;
+  --mono:    'IBM Plex Mono', monospace;
+  --sans:    'IBM Plex Sans', system-ui, sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:14px;line-height:1.6;min-height:100vh}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
 
-/* LOGIN */
-#login-screen{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:2rem}
-.login-box{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:3rem;width:100%;max-width:420px}
-.wordmark{font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--accent);text-transform:uppercase;margin-bottom:.5rem}
-.login-title{font-size:28px;font-weight:600;line-height:1.2;margin-bottom:2rem}
-.login-title span{color:var(--accent)}
+/* ── LOGIN ─────────────────────────────── */
+#login-screen{
+  display:flex;align-items:center;justify-content:center;
+  min-height:100vh;padding:2rem;
+  background:radial-gradient(ellipse 80% 60% at 50% -20%, rgba(56,139,253,0.08) 0%, transparent 70%);
+}
+.login-wrap{width:100%;max-width:400px}
+.login-eyebrow{
+  font-family:var(--mono);font-size:10px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:1.5rem;
+  display:flex;align-items:center;gap:.5rem;
+}
+.login-eyebrow::before{
+  content:'';display:block;width:20px;height:1px;background:var(--muted);
+}
+.login-title{
+  font-family:var(--serif);font-size:42px;font-weight:400;
+  line-height:1.1;color:var(--text);margin-bottom:.5rem;
+}
+.login-title em{font-style:italic;color:var(--muted)}
+.login-sub{font-size:13px;color:var(--muted);margin-bottom:2.5rem}
+.login-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:12px;padding:2rem;
+}
 .field{margin-bottom:1.25rem}
-.field label{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:.4rem;font-family:var(--mono)}
-.field input{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:var(--mono);font-size:14px;padding:.75rem 1rem;outline:none;transition:border-color .15s}
-.field input:focus{border-color:var(--accent)}
-.btn-primary{width:100%;background:var(--accent);color:#000;border:none;border-radius:8px;font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.08em;padding:.875rem;cursor:pointer;transition:opacity .15s}
-.btn-primary:hover{opacity:.85}
-.btn-primary:disabled{opacity:.5;cursor:not-allowed}
-.login-error{color:var(--danger);font-family:var(--mono);font-size:12px;margin-top:.75rem;min-height:18px;text-align:center}
-.login-note{font-size:12px;color:var(--muted);margin-top:1.5rem;text-align:center;font-family:var(--mono)}
+.field label{
+  display:block;font-family:var(--mono);font-size:10px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
+  margin-bottom:.4rem;
+}
+.field input{
+  width:100%;background:var(--bg);border:1px solid var(--border);
+  border-radius:8px;color:var(--text);font-family:var(--mono);
+  font-size:13px;padding:.7rem .9rem;outline:none;
+  transition:border-color .15s;
+}
+.field input:focus{border-color:var(--blue)}
+.btn-login{
+  width:100%;background:var(--blue);color:#000;border:none;
+  border-radius:8px;font-family:var(--mono);font-size:12px;
+  font-weight:600;letter-spacing:.06em;padding:.8rem;
+  cursor:pointer;transition:opacity .15s;margin-top:.25rem;
+}
+.btn-login:hover{opacity:.85}
+.btn-login:disabled{opacity:.4;cursor:not-allowed}
+.login-err{
+  color:var(--skip);font-family:var(--mono);font-size:11px;
+  margin-top:.75rem;min-height:16px;text-align:center;
+}
 
-/* APP */
+/* ── APP SHELL ─────────────────────────── */
 #app{display:none}
-.topbar{display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;border-bottom:1px solid var(--border);background:var(--bg);position:sticky;top:0;z-index:100}
-.logo-mark{font-family:var(--mono);font-size:13px;font-weight:700;color:var(--accent);letter-spacing:.1em}
-.station-pill{background:var(--bg3);border:1px solid var(--border);border-radius:100px;font-family:var(--mono);font-size:11px;padding:.25rem .75rem;color:var(--muted)}
-.topbar-right{display:flex;align-items:center;gap:1rem}
-.user-email{font-family:var(--mono);font-size:11px;color:var(--muted)}
-.btn-sm{background:none;border:1px solid var(--border);border-radius:6px;color:var(--muted);font-family:var(--mono);font-size:11px;padding:.3rem .75rem;cursor:pointer;transition:all .15s}
-.btn-sm:hover{border-color:var(--accent);color:var(--accent)}
-.btn-sm.danger:hover{border-color:var(--danger);color:var(--danger)}
-.last-updated{font-family:var(--mono);font-size:11px;color:var(--muted)}
-.content{padding:2rem;max-width:1400px;margin:0 auto}
 
-/* LOADING */
-.loading-overlay{display:flex;align-items:center;justify-content:center;padding:4rem;color:var(--muted);font-family:var(--mono);font-size:12px;letter-spacing:.15em}
-@keyframes spin{to{transform:rotate(360deg)}}
-.spinner{width:16px;height:16px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;margin-right:.75rem}
+.topbar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.875rem 2rem;border-bottom:1px solid var(--border);
+  background:rgba(13,17,23,.9);backdrop-filter:blur(8px);
+  position:sticky;top:0;z-index:100;
+}
+.topbar-brand{display:flex;align-items:center;gap:.875rem}
+.brand-name{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--text);letter-spacing:.04em}
+.brand-dot{width:6px;height:6px;border-radius:50%;background:var(--go);animation:blink 2s ease infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.station-tag{
+  font-family:var(--mono);font-size:10px;color:var(--muted);
+  background:var(--raised);border:1px solid var(--border);
+  border-radius:4px;padding:.15rem .5rem;
+}
+.topbar-right{display:flex;align-items:center;gap:.75rem}
+.topbar-ts{font-family:var(--mono);font-size:10px;color:var(--dim)}
+.topbar-user{font-family:var(--mono);font-size:10px;color:var(--muted)}
+.btn-xs{
+  background:none;border:1px solid var(--border);border-radius:5px;
+  color:var(--muted);font-family:var(--mono);font-size:10px;
+  padding:.25rem .6rem;cursor:pointer;transition:all .15s;
+}
+.btn-xs:hover{border-color:var(--border2);color:var(--text)}
+.btn-xs.red:hover{border-color:var(--skip-bd);color:var(--skip)}
 
-/* CARDS */
-.bet-hero{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
-.card{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:1.75rem}
-.card-label{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem}
-.verdict{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:.08em;padding:.4rem 1rem;border-radius:100px;margin-bottom:1.25rem}
-.verdict.go{background:rgba(0,212,170,.12);color:var(--accent);border:1px solid rgba(0,212,170,.3)}
-.verdict.skip{background:rgba(255,59,85,.12);color:var(--danger);border:1px solid rgba(255,59,85,.3)}
-.verdict.watch{background:rgba(240,192,64,.12);color:var(--gold);border:1px solid rgba(240,192,64,.3)}
-.verdict.none{background:var(--bg3);color:var(--muted);border:1px solid var(--border)}
-.verdict-dot{width:7px;height:7px;border-radius:50%}
-.verdict.go .verdict-dot{background:var(--accent);animation:pulse 1.5s infinite}
-.verdict.skip .verdict-dot{background:var(--danger)}
-.verdict.watch .verdict-dot{background:var(--gold);animation:pulse 1.5s infinite}
-.verdict.none .verdict-dot{background:var(--muted)}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
-.nowcast-temp{font-family:var(--mono);font-size:64px;font-weight:700;line-height:1;letter-spacing:-.03em;margin-bottom:.25rem}
-.nowcast-temp span{font-size:24px;color:var(--muted);font-weight:400}
-.nowcast-meta{font-size:12px;color:var(--muted);margin-bottom:1rem}
-.ci-bar-wrap{margin:1.25rem 0}
-.ci-label-row{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;color:var(--muted);margin-bottom:.4rem}
-.ci-bar{height:6px;background:var(--bg3);border-radius:3px;position:relative;overflow:visible}
-.ci-fill{position:absolute;height:100%;background:linear-gradient(90deg,rgba(0,212,170,.3),rgba(0,212,170,.8),rgba(0,212,170,.3));border-radius:3px;transition:all .5s}
-.ci-center{position:absolute;top:-4px;width:14px;height:14px;background:var(--accent);border-radius:50%;border:2px solid var(--bg2);transform:translateX(-50%)}
-.bucket-display{display:flex;align-items:center;gap:.75rem;margin-top:1rem}
-.bucket-badge{background:rgba(0,212,170,.1);border:1px solid rgba(0,212,170,.3);border-radius:8px;font-family:var(--mono);font-size:20px;font-weight:700;color:var(--accent);padding:.4rem 1rem}
-.bucket-meta{font-size:12px;color:var(--muted)}
-.mos-breakdown{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:.75rem}
-.mos-item{background:var(--bg3);border-radius:8px;padding:.5rem .875rem;font-family:var(--mono);font-size:12px}
-.mos-item-label{color:var(--muted);font-size:10px;display:block}
-.mos-item-val{font-size:16px;font-weight:700;color:var(--text)}
-.position-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:1rem}
-.pos-item{background:var(--bg3);border-radius:10px;padding:1rem}
-.pos-label{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.4rem}
-.pos-val{font-family:var(--mono);font-size:20px;font-weight:700}
-.green{color:var(--accent)}.blue{color:var(--accent2)}.gold{color:var(--gold)}
-.kelly-bar{height:8px;background:var(--bg3);border-radius:4px;overflow:hidden;margin-top:.4rem}
-.kelly-fill{height:100%;background:linear-gradient(90deg,var(--accent2),var(--accent));border-radius:4px;transition:width .6s}
-.divider{height:1px;background:var(--border);margin:1.5rem 0}
-.section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem}
-.section-title{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.page{padding:2rem;max-width:1200px;margin:0 auto}
 
-/* SKIP RULES */
-.skip-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:.75rem;margin-bottom:1.5rem}
-.skip-rule{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;display:flex;align-items:flex-start;gap:.875rem}
-.skip-rule.triggered{border-color:rgba(255,59,85,.4);background:rgba(255,59,85,.04)}
-.skip-rule.clear{border-color:rgba(0,212,170,.2)}
-.skip-rule.manual{border-color:rgba(240,192,64,.2)}
-.rule-icon{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;margin-top:1px}
-.skip-rule.triggered .rule-icon{background:rgba(255,59,85,.15)}
-.skip-rule.clear .rule-icon{background:rgba(0,212,170,.12)}
-.skip-rule.manual .rule-icon{background:rgba(240,192,64,.12)}
-.rule-name{font-size:13px;font-weight:500;margin-bottom:.25rem}
-.rule-desc{font-size:11px;color:var(--muted);line-height:1.5}
-.rule-value{display:inline-block;font-family:var(--mono);font-size:10px;margin-top:.4rem;padding:.15rem .5rem;border-radius:4px}
-.skip-rule.triggered .rule-value{background:rgba(255,59,85,.15);color:var(--danger)}
-.skip-rule.clear .rule-value{background:rgba(0,212,170,.12);color:var(--accent)}
-.skip-rule.manual .rule-value{background:rgba(240,192,64,.12);color:var(--gold)}
+/* ── VERDICT HERO ──────────────────────── */
+.verdict-hero{
+  position:relative;overflow:hidden;
+  border-radius:16px;padding:2.5rem;margin-bottom:1.5rem;
+  border:1px solid var(--border);background:var(--surface);
+}
+.verdict-hero.go{border-color:var(--go-bd);background:linear-gradient(135deg,var(--surface) 60%,var(--go-bg))}
+.verdict-hero.skip{border-color:var(--skip-bd);background:linear-gradient(135deg,var(--surface) 60%,var(--skip-bg))}
+.verdict-hero.watch{border-color:var(--watch-bd);background:linear-gradient(135deg,var(--surface) 60%,var(--watch-bg))}
+.verdict-hero.none{border-color:var(--border)}
 
-/* BIAS */
-.bias-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;margin-bottom:1.5rem}
-.bias-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.25rem;text-align:center}
-.bias-season{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.15em;margin-bottom:.5rem}
-.bias-val{font-family:var(--mono);font-size:28px;font-weight:700;line-height:1;margin-bottom:.25rem}
-.bias-val.cold{color:var(--accent2)}.bias-val.warm{color:var(--warn)}.bias-val.neutral{color:var(--muted)}
-.bias-n{font-size:11px;color:var(--muted)}
-.bias-desc{font-size:11px;color:var(--muted);margin-top:.4rem}
+.verdict-layout{display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:start}
 
-/* ALERTS */
-.alert-item{display:flex;align-items:flex-start;gap:1rem;padding:1rem 1.25rem;border-bottom:1px solid var(--border)}
+.verdict-eyebrow{
+  font-family:var(--mono);font-size:10px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:.75rem;
+}
+.verdict-temp{
+  font-family:var(--serif);font-size:80px;font-weight:400;
+  line-height:.9;letter-spacing:-.02em;margin-bottom:.5rem;
+}
+.verdict-temp .unit{font-size:36px;color:var(--muted)}
+.verdict-sub{font-size:13px;color:var(--muted);margin-bottom:1.5rem}
+
+.verdict-badge{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-family:var(--mono);font-size:11px;font-weight:600;
+  letter-spacing:.08em;padding:.35rem .9rem;border-radius:6px;
+}
+.verdict-badge.go  {background:var(--go-bg); color:var(--go);  border:1px solid var(--go-bd)}
+.verdict-badge.skip{background:var(--skip-bg);color:var(--skip);border:1px solid var(--skip-bd)}
+.verdict-badge.watch{background:var(--watch-bg);color:var(--watch);border:1px solid var(--watch-bd)}
+.verdict-badge.none{background:var(--raised);color:var(--muted);border:1px solid var(--border)}
+.badge-dot{width:6px;height:6px;border-radius:50%}
+.go   .badge-dot{background:var(--go);  animation:blink 1.5s infinite}
+.skip .badge-dot{background:var(--skip)}
+.watch .badge-dot{background:var(--watch);animation:blink 1.5s infinite}
+
+/* Right panel of hero */
+.verdict-right{text-align:right;min-width:200px}
+.bucket-label{font-family:var(--mono);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.4rem}
+.bucket-main{font-family:var(--mono);font-size:28px;font-weight:600;color:var(--text);margin-bottom:.25rem}
+.bucket-adj{font-family:var(--mono);font-size:13px;color:var(--muted);margin-bottom:1.25rem}
+
+.kelly-block{}
+.kelly-label{font-family:var(--mono);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.4rem}
+.kelly-val{font-family:var(--mono);font-size:22px;font-weight:600;color:var(--blue)}
+.kelly-sub{font-family:var(--mono);font-size:11px;color:var(--muted)}
+
+/* CI bar */
+.ci-row{margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border)}
+.ci-meta{display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;color:var(--muted);margin-bottom:.4rem}
+.ci-track{height:4px;background:var(--raised);border-radius:2px;position:relative}
+.ci-range{position:absolute;height:100%;background:rgba(88,166,255,.25);border-radius:2px;transition:all .4s}
+.ci-pin{position:absolute;top:-5px;width:14px;height:14px;background:var(--blue);border-radius:50%;border:2px solid var(--surface);transform:translateX(-50%);transition:left .4s}
+
+/* ── INPUTS ROW ────────────────────────── */
+.inputs-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1.5rem}
+.input-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.1rem 1.25rem}
+.input-card-label{font-family:var(--mono);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.35rem}
+.input-card-val{font-family:var(--mono);font-size:18px;font-weight:500;color:var(--text)}
+.input-card-sub{font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:.15rem}
+
+/* ── SKIP RULES ────────────────────────── */
+.section-title{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:.875rem}
+
+.rules-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.75rem;margin-bottom:1.5rem}
+.rule-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:10px;padding:1rem 1.1rem;
+  display:flex;gap:.75rem;align-items:flex-start;
+  transition:border-color .15s;
+}
+.rule-card.ok      {border-color:var(--border)}
+.rule-card.triggered{border-color:var(--skip-bd);background:var(--skip-bg)}
+.rule-card.warning  {border-color:var(--watch-bd);background:var(--watch-bg)}
+
+.rule-icon{
+  font-size:16px;width:32px;height:32px;border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;background:var(--raised);
+}
+.rule-card.triggered .rule-icon{background:rgba(248,81,73,.12)}
+.rule-card.warning   .rule-icon{background:rgba(210,153,34,.12)}
+
+.rule-name{font-size:12px;font-weight:500;color:var(--text);margin-bottom:.2rem}
+.rule-value{font-family:var(--mono);font-size:10px}
+.rule-card.ok       .rule-value{color:var(--go)}
+.rule-card.triggered .rule-value{color:var(--skip)}
+.rule-card.warning   .rule-value{color:var(--watch)}
+
+/* ── BIAS CARDS ────────────────────────── */
+.bias-row{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;margin-bottom:1.5rem}
+.bias-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.1rem;text-align:center}
+.bias-season{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.4rem}
+.bias-num{font-family:var(--mono);font-size:26px;font-weight:500;margin-bottom:.2rem}
+.bias-num.pos{color:#79c0ff}.bias-num.neg{color:#ffa657}.bias-num.flat{color:var(--muted)}
+.bias-n{font-family:var(--mono);font-size:10px;color:var(--dim)}
+.bias-note{font-size:11px;color:var(--muted);margin-top:.3rem}
+
+/* ── TWO COL ───────────────────────────── */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
+.panel{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.panel-head{padding:.875rem 1.25rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.panel-title{font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+
+/* Alert log */
+.alert-item{display:flex;gap:.875rem;padding:.875rem 1.25rem;border-bottom:1px solid var(--border);align-items:flex-start}
 .alert-item:last-child{border-bottom:none}
-.alert-dot{width:8px;height:8px;border-radius:50%;margin-top:5px;flex-shrink:0}
-.alert-dot.red{background:var(--danger);animation:pulse 1.5s infinite}
-.alert-dot.yellow{background:var(--gold)}
-.alert-dot.green{background:var(--accent)}
-.alert-time{font-family:var(--mono);font-size:10px;color:var(--muted)}
-.alert-msg{font-size:13px;margin-bottom:.2rem}
+.alert-dot{width:8px;height:8px;border-radius:50%;margin-top:4px;flex-shrink:0}
+.alert-dot.g{background:var(--go)}
+.alert-dot.y{background:var(--watch)}
+.alert-dot.r{background:var(--skip);animation:blink 1.5s infinite}
+.alert-ts{font-family:var(--mono);font-size:10px;color:var(--muted)}
+.alert-msg{font-size:12px;color:var(--text)}
+.empty-panel{padding:2.5rem;text-align:center;font-family:var(--mono);font-size:11px;color:var(--dim)}
 
-/* TABLE */
-.table-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:1.5rem}
+/* Bet form */
+.bet-form-inner{padding:1rem 1.25rem;display:flex;flex-wrap:wrap;gap:.625rem;align-items:flex-end}
+.bf{display:flex;flex-direction:column;gap:.25rem}
+.bf label{font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+.bf input,.bf select{
+  background:var(--bg);border:1px solid var(--border);border-radius:6px;
+  color:var(--text);font-family:var(--mono);font-size:12px;
+  padding:.35rem .6rem;outline:none;min-width:82px;
+}
+.bf input:focus,.bf select:focus{border-color:var(--blue)}
+.btn-log{
+  background:var(--blue);color:#000;border:none;border-radius:6px;
+  font-family:var(--mono);font-size:11px;font-weight:600;
+  padding:.4rem .9rem;cursor:pointer;
+}
+.btn-log:hover{opacity:.85}
+
+/* Bet table */
+.bet-table-wrap{overflow-x:auto}
 table{width:100%;border-collapse:collapse}
-thead th{background:var(--bg3);font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);padding:.875rem 1.25rem;text-align:left;border-bottom:1px solid var(--border)}
-tbody td{padding:.875rem 1.25rem;font-size:13px;border-bottom:1px solid var(--border);font-family:var(--mono)}
+thead th{
+  background:var(--raised);font-family:var(--mono);font-size:9px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
+  padding:.625rem 1.25rem;text-align:left;border-bottom:1px solid var(--border);
+  white-space:nowrap;
+}
+tbody td{
+  padding:.75rem 1.25rem;font-family:var(--mono);font-size:12px;
+  border-bottom:1px solid var(--border);
+}
 tbody tr:last-child td{border-bottom:none}
-tbody tr:hover{background:var(--bg3)}
-.outcome-pill{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.1em;padding:.2rem .6rem;border-radius:4px}
-.outcome-pill.win{background:rgba(0,212,170,.15);color:var(--accent)}
-.outcome-pill.loss{background:rgba(255,59,85,.15);color:var(--danger)}
-.outcome-pill.skip{background:rgba(107,122,141,.15);color:var(--muted)}
-.outcome-pill.pending{background:rgba(0,153,255,.15);color:var(--accent2)}
-.pnl-pos{color:var(--accent)}.pnl-neg{color:var(--danger)}
-.empty-state{padding:3rem;text-align:center;color:var(--muted);font-family:var(--mono);font-size:12px;letter-spacing:.1em}
+tbody tr:hover{background:var(--raised)}
+.pill{display:inline-block;font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:.08em;padding:.15rem .5rem;border-radius:4px}
+.pill.win  {background:rgba(63,185,80,.12); color:var(--go)}
+.pill.loss {background:rgba(248,81,73,.12); color:var(--skip)}
+.pill.skip {background:var(--raised);       color:var(--muted)}
+.pill.pending{background:rgba(88,166,255,.12);color:var(--blue)}
+.pos{color:var(--go)}.neg{color:var(--skip)}
 
-/* BET FORM */
-.bet-form{display:flex;gap:.75rem;flex-wrap:wrap;align-items:flex-end;padding:1.25rem;background:var(--bg3);border-radius:10px;margin-bottom:1rem}
-.bet-field{display:flex;flex-direction:column;gap:.3rem}
-.bet-field label{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
-.bet-field input,.bet-field select{background:var(--bg2);border:1px solid var(--border);border-radius:6px;color:var(--text);font-family:var(--mono);font-size:13px;padding:.4rem .65rem;outline:none;min-width:90px}
-.bet-field input:focus,.bet-field select:focus{border-color:var(--accent)}
-.btn-add-bet{background:var(--accent);color:#000;border:none;border-radius:6px;font-family:var(--mono);font-size:12px;font-weight:700;padding:.5rem 1rem;cursor:pointer}
-.btn-add-bet:hover{opacity:.85}
+/* Loading */
+.loading{display:flex;align-items:center;justify-content:center;padding:5rem;gap:.75rem;font-family:var(--mono);font-size:11px;color:var(--muted)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.spin{width:14px;height:14px;border:1.5px solid var(--border);border-top-color:var(--blue);border-radius:50%;animation:spin .7s linear infinite}
 
-.manual-check-list{list-style:none}
-.manual-check-list li{display:flex;align-items:flex-start;gap:.75rem;padding:.75rem 0;border-bottom:1px solid var(--border);font-size:12px;color:var(--muted)}
-.manual-check-list li:last-child{border-bottom:none}
-.mc-link{display:inline-block;margin-top:.25rem;font-family:var(--mono);font-size:10px;color:var(--accent2);text-decoration:none}
-.mc-link:hover{text-decoration:underline}
+@keyframes up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.fade-up{animation:up .35s ease both}
 
-@media(max-width:768px){.bet-hero,.bias-grid,.position-grid{grid-template-columns:1fr}.content{padding:1rem}}
-.fade-in{animation:fadeIn .4s ease both}
-@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media(max-width:900px){
+  .verdict-layout{grid-template-columns:1fr}
+  .verdict-right{text-align:left}
+  .inputs-row,.bias-row{grid-template-columns:1fr 1fr}
+  .two-col{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .inputs-row,.bias-row,.rules-grid{grid-template-columns:1fr}
+  .page{padding:1rem}
+  .verdict-temp{font-size:60px}
+}
 </style>
 </head>
 <body>
 
-<!-- LOGIN -->
+<!-- ═══ LOGIN ═══════════════════════════════════════════ -->
 <div id="login-screen">
-  <div class="login-box">
-    <div class="wordmark">KDEN // Temp Intelligence</div>
-    <h1 class="login-title">Bet smarter on<br><span>Denver weather</span></h1>
-    <div class="field">
-      <label>Email</label>
-      <input type="email" id="login-email" placeholder="you@email.com">
+  <div class="login-wrap">
+    <div class="login-eyebrow">KDEN Temperature Intelligence</div>
+    <h1 class="login-title">Daily high.<br><em>Decided.</em></h1>
+    <p class="login-sub">Bias-corrected nowcasts for Denver Intl Airport · Kalshi market edge</p>
+    <div class="login-card">
+      <div class="field">
+        <label>Email</label>
+        <input type="email" id="login-email" placeholder="you@email.com" autocomplete="email">
+      </div>
+      <div class="field" style="margin-bottom:.5rem">
+        <label>Password</label>
+        <input type="password" id="login-pw" placeholder="••••••••" autocomplete="current-password">
+      </div>
+      <button class="btn-login" id="login-btn">Sign in →</button>
+      <div class="login-err" id="login-err"></div>
     </div>
-    <div class="field">
-      <label>Password</label>
-      <input type="password" id="login-pw" placeholder="••••••••">
-    </div>
-    <button class="btn-primary" id="login-btn">Sign in →</button>
-    <div class="login-error" id="login-error"></div>
-    <p class="login-note">Supabase Auth · KDEN data refreshes daily</p>
   </div>
 </div>
 
-<!-- APP -->
+<!-- ═══ APP ══════════════════════════════════════════════ -->
 <div id="app">
+
   <div class="topbar">
-    <div style="display:flex;align-items:center;gap:1rem">
-      <span class="logo-mark">KDEN//TI</span>
-      <span class="station-pill">Denver Intl · 5,431 ft · ASOS</span>
+    <div class="topbar-brand">
+      <div class="brand-dot"></div>
+      <span class="brand-name">KDEN · TI</span>
+      <span class="station-tag">Denver Intl · 5,431 ft</span>
     </div>
     <div class="topbar-right">
-      <span class="last-updated" id="last-updated-ts">—</span>
-      <span class="user-email" id="user-email-display"></span>
-      <button class="btn-sm" id="refresh-btn">↻ Refresh</button>
-      <button class="btn-sm danger" id="logout-btn">Sign out</button>
+      <span class="topbar-ts" id="ts">—</span>
+      <span class="topbar-user" id="user-label"></span>
+      <button class="btn-xs" id="refresh-btn">↻ Refresh</button>
+      <button class="btn-xs red" id="logout-btn">Sign out</button>
     </div>
   </div>
 
-  <div class="content">
-    <div id="app-loading" class="loading-overlay">
-      <div class="spinner"></div> LOADING FROM SUPABASE...
+  <div class="page">
+
+    <div id="app-loading" class="loading">
+      <div class="spin"></div> Loading from Supabase...
     </div>
-    <div id="app-content" style="display:none">
 
-      <div class="section-header" style="margin-bottom:1rem">
-        <span class="section-title">Tomorrow's bet · <span id="tomorrow-date">—</span></span>
-      </div>
+    <div id="app-body" style="display:none">
 
-      <!-- Hero -->
-      <div class="bet-hero">
-        <div class="card fade-in">
-          <div class="card-label">Bias-corrected nowcast</div>
-          <div id="verdict-badge" class="verdict none">
-            <div class="verdict-dot"></div>
-            <span id="verdict-text">AWAITING DATA</span>
-          </div>
-          <div class="nowcast-temp" id="nowcast-temp">—<span>°F</span></div>
-          <div class="nowcast-meta" id="nowcast-meta">Run backfill.py to populate data.</div>
-          <div class="ci-bar-wrap">
-            <div class="ci-label-row">
-              <span>80% confidence interval</span>
-              <span id="ci-range">—</span>
+      <!-- ── VERDICT HERO ── -->
+      <div class="verdict-hero none fade-up" id="hero">
+        <div class="verdict-layout">
+          <div>
+            <div class="verdict-eyebrow" id="hero-date">Tomorrow · —</div>
+            <div class="verdict-temp" id="hero-temp">—<span class="unit">°F</span></div>
+            <div class="verdict-sub" id="hero-sub">Run backfill.py to populate data</div>
+            <div class="verdict-badge none" id="verdict-badge">
+              <div class="badge-dot"></div>
+              <span id="verdict-text">AWAITING DATA</span>
             </div>
-            <div class="ci-bar">
-              <div class="ci-fill" id="ci-fill" style="left:20%;width:60%"></div>
-              <div class="ci-center" id="ci-center" style="left:50%"></div>
+
+            <div class="ci-row" id="ci-row">
+              <div class="ci-meta">
+                <span>80% confidence interval</span>
+                <span id="ci-range">—</span>
+              </div>
+              <div class="ci-track">
+                <div class="ci-range" id="ci-fill" style="left:20%;width:60%"></div>
+                <div class="ci-pin" id="ci-pin" style="left:50%"></div>
+              </div>
             </div>
           </div>
-          <div class="bucket-display">
-            <div class="bucket-badge" id="primary-bucket">—</div>
-            <div class="bucket-meta">Primary (70%)<br><span id="adj-bucket" style="color:var(--accent2)">—</span></div>
-          </div>
-          <div style="margin-top:1.25rem">
-            <div class="card-label" style="margin-bottom:.5rem">Forecast inputs</div>
-            <div class="mos-breakdown">
-              <div class="mos-item"><span class="mos-item-label">Raw forecast</span><span class="mos-item-val" id="raw-mos">—</span></div>
-              <div class="mos-item"><span class="mos-item-label">Bias applied</span><span class="mos-item-val" id="bias-applied">—</span></div>
-              <div class="mos-item"><span class="mos-item-label">Season</span><span class="mos-item-val" id="season-val">—</span></div>
-              <div class="mos-item"><span class="mos-item-label">Samples</span><span class="mos-item-val" id="sample-n">—</span></div>
+
+          <div class="verdict-right">
+            <div class="bucket-label">Primary bucket · 70%</div>
+            <div class="bucket-main" id="bucket-main">—</div>
+            <div class="bucket-adj" id="bucket-adj">Adjacent · 30% → —</div>
+
+            <div class="kelly-block" style="margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid var(--border)">
+              <div class="kelly-label">Half-Kelly · $500 bankroll</div>
+              <div class="kelly-val" id="kelly-val">—%</div>
+              <div class="kelly-sub" id="kelly-dollar">$— max position</div>
             </div>
           </div>
         </div>
+      </div>
 
-        <div class="card fade-in" style="animation-delay:.08s">
-          <div class="card-label">Position sizing · Half-Kelly (medium risk)</div>
-          <div class="position-grid">
-            <div class="pos-item"><div class="pos-label">Half-Kelly %</div><div class="pos-val green" id="kelly-pct">—</div></div>
-            <div class="pos-item"><div class="pos-label">On $500 bankroll</div><div class="pos-val blue" id="kelly-dollar">—</div></div>
-            <div class="pos-item"><div class="pos-label">Model p(win)</div><div class="pos-val gold" id="p-win">—</div></div>
-            <div class="pos-item"><div class="pos-label">Contract price</div><div class="pos-val" id="market-price">Check Kalshi</div></div>
-          </div>
-          <div style="margin-top:1rem">
-            <div class="ci-label-row"><span style="font-family:var(--mono);font-size:11px;color:var(--muted)">Bankroll allocation</span><span style="font-family:var(--mono);font-size:11px;color:var(--muted)" id="kelly-pct-label">—</span></div>
-            <div class="kelly-bar"><div class="kelly-fill" id="kelly-bar-fill" style="width:0%"></div></div>
-          </div>
-          <div class="divider"></div>
-          <div class="card-label" style="margin-bottom:.75rem">Manual checks before betting</div>
-          <ul class="manual-check-list">
-            <li><span>📋</span><div><div>Read NWS BOU Area Forecast Discussion</div><a class="mc-link" href="https://forecast.weather.gov/product.php?site=BOU&product=AFD" target="_blank">forecast.weather.gov → AFD →</a></div></li>
-            <li><span>📊</span><div><div>Check GEFS ensemble spread (skip if &gt;4°F)</div><a class="mc-link" href="https://www.pivotalweather.com/model.php?p=max_t_d1&r=co" target="_blank">pivotalweather.com →</a></div></li>
-            <li><span>⚡</span><div><div>Check SPC Day 1 convective outlook for CO</div><a class="mc-link" href="https://www.spc.noaa.gov/products/outlook/day1otlk.html" target="_blank">spc.noaa.gov →</a></div></li>
-          </ul>
+      <!-- ── INPUT CARDS ── -->
+      <div class="inputs-row fade-up" style="animation-delay:.05s">
+        <div class="input-card">
+          <div class="input-card-label">Raw NWS forecast</div>
+          <div class="input-card-val" id="ic-raw">—</div>
+          <div class="input-card-sub" id="ic-source">—</div>
+        </div>
+        <div class="input-card">
+          <div class="input-card-label">Bias correction</div>
+          <div class="input-card-val" id="ic-bias">—</div>
+          <div class="input-card-sub" id="ic-season">—</div>
+        </div>
+        <div class="input-card">
+          <div class="input-card-label">Bias samples</div>
+          <div class="input-card-val" id="ic-samples">—</div>
+          <div class="input-card-sub" id="ic-sample-note">—</div>
+        </div>
+        <div class="input-card">
+          <div class="input-card-label">Model p(win)</div>
+          <div class="input-card-val" id="ic-pwin">—</div>
+          <div class="input-card-sub">CI-adjusted estimate</div>
         </div>
       </div>
 
-      <!-- Skip Rules -->
-      <div class="section-header">
-        <span class="section-title">Skip rules · <span id="skip-count">0</span> triggered</span>
-      </div>
-      <div class="skip-grid" id="skip-grid"></div>
+      <!-- ── SKIP RULES ── -->
+      <div class="section-title"><span id="skip-count-label">Skip rules · checking...</span></div>
+      <div class="rules-grid fade-up" style="animation-delay:.1s" id="rules-grid"></div>
 
-      <!-- Bias -->
-      <div class="section-header">
-        <span class="section-title">Seasonal bias · KDEN · last 60 days</span>
-      </div>
-      <div class="bias-grid" id="bias-grid"></div>
+      <!-- ── SEASONAL BIAS ── -->
+      <div class="section-title">Seasonal bias · KDEN · rolling 60 days</div>
+      <div class="bias-row fade-up" style="animation-delay:.15s" id="bias-row"></div>
 
-      <!-- Alerts -->
-      <div class="section-header"><span class="section-title">Recent alerts</span></div>
-      <div class="table-wrap" style="margin-bottom:1.5rem">
-        <div id="alert-log"><div class="empty-state">NO ALERTS YET</div></div>
+      <!-- ── ALERTS + BET LOG ── -->
+      <div class="two-col fade-up" style="animation-delay:.2s">
+
+        <div class="panel">
+          <div class="panel-head">
+            <span class="panel-title">Recent alerts</span>
+          </div>
+          <div id="alert-log"><div class="empty-panel">No alerts yet</div></div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head">
+            <span class="panel-title">Log a bet</span>
+          </div>
+          <div class="bet-form-inner">
+            <div class="bf"><label>Date</label><input type="date" id="f-date"></div>
+            <div class="bf"><label>Bucket</label><input type="text" id="f-bucket" placeholder="82-83"></div>
+            <div class="bf"><label>Position</label>
+              <select id="f-pos"><option>YES</option><option>NO</option><option>SKIP</option></select>
+            </div>
+            <div class="bf"><label>Contracts</label><input type="number" id="f-qty" placeholder="10"></div>
+            <div class="bf"><label>Entry $</label><input type="number" id="f-price" placeholder="0.65" step="0.01"></div>
+            <div class="bf"><label>Actual high</label><input type="number" id="f-actual" placeholder="after close"></div>
+            <div class="bf"><label>Skip reason</label><input type="text" id="f-skip" placeholder="optional"></div>
+            <button class="btn-log" id="log-btn">+ Log</button>
+          </div>
+        </div>
       </div>
 
-      <!-- Bet history -->
-      <div class="section-header"><span class="section-title">Bet history</span></div>
-      <div class="bet-form">
-        <div class="bet-field"><label>Date</label><input type="date" id="form-date"></div>
-        <div class="bet-field"><label>Bucket</label><input type="text" id="form-bucket" placeholder="58-59"></div>
-        <div class="bet-field"><label>Position</label><select id="form-pos"><option>YES</option><option>NO</option><option>SKIP</option></select></div>
-        <div class="bet-field"><label>Contracts</label><input type="number" id="form-contracts" placeholder="10"></div>
-        <div class="bet-field"><label>Entry $</label><input type="number" id="form-price" placeholder="0.65" step="0.01"></div>
-        <div class="bet-field"><label>Actual High</label><input type="number" id="form-actual" placeholder="after resolution"></div>
-        <div class="bet-field"><label>Skip reason</label><input type="text" id="form-skip" placeholder="optional"></div>
-        <button class="btn-add-bet" id="log-bet-btn">+ Log bet</button>
-      </div>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>Date</th><th>Nowcast</th><th>Actual</th><th>Bucket</th><th>Pos</th><th>Entry</th><th>Outcome</th><th>P&amp;L</th></tr></thead>
-          <tbody id="history-tbody"><tr><td colspan="8" class="empty-state" style="text-align:center">NO BETS LOGGED YET</td></tr></tbody>
-        </table>
+      <!-- ── BET HISTORY ── -->
+      <div class="section-title">Bet history</div>
+      <div class="panel fade-up" style="animation-delay:.25s;margin-bottom:3rem">
+        <div class="bet-table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th><th>Nowcast</th><th>Actual</th>
+                <th>Bucket</th><th>Pos</th><th>Entry</th>
+                <th>Outcome</th><th>P&amp;L</th>
+              </tr>
+            </thead>
+            <tbody id="bet-tbody">
+              <tr><td colspan="8" class="empty-panel" style="text-align:center">No bets logged yet</td></tr>
+            </tbody>
+          </table>
+        </div>
       </div>
 
-    </div>
-  </div>
-</div>
+    </div><!-- /app-body -->
+  </div><!-- /page -->
+</div><!-- /app -->
 
 <script>
-// ═══════════════════════════════════════════════════════
-// CONFIG — replace with your actual values
-// ═══════════════════════════════════════════════════════
-const SB_URL  = "https://tiuganpzargnltkugdnm.supabase.co";
-const SB_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRpdWdhbnB6YXJnbmx0a3VnZG5tIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3NDMyMTcwMywiZXhwIjoyMDg5ODk3NzAzfQ.FEyybWEJY6zMeyXFeBbis4jVY3ixuoCU1d0Awp-y4I4";
+// ═══════════════════════════════════════════════════
+// CONFIG — replace with your values
+// ═══════════════════════════════════════════════════
+const SB_URL  = "https://YOUR_PROJECT_ID.supabase.co";
+const SB_ANON = "YOUR_ANON_KEY";
 
-// ═══════════════════════════════════════════════════════
-// SUPABASE REST API — no library, no eval, no CSP issues
-// ═══════════════════════════════════════════════════════
-let accessToken = null;
+// ═══════════════════════════════════════════════════
+// SUPABASE REST (no library — no eval — no CSP issues)
+// ═══════════════════════════════════════════════════
+let token = null;
 
-async function sbAuth(email, password) {
+async function sbAuth(email, pw) {
   const r = await fetch(`${SB_URL}/auth/v1/token?grant_type=password`, {
     method: "POST",
     headers: { "Content-Type": "application/json", "apikey": SB_ANON },
-    body: JSON.stringify({ email, password })
+    body: JSON.stringify({ email, password: pw }),
   });
   return r.json();
 }
@@ -329,278 +489,263 @@ async function sbAuth(email, password) {
 async function sbSignOut() {
   await fetch(`${SB_URL}/auth/v1/logout`, {
     method: "POST",
-    headers: { "apikey": SB_ANON, "Authorization": `Bearer ${accessToken}` }
+    headers: { "apikey": SB_ANON, "Authorization": `Bearer ${token}` },
   });
 }
 
-async function sbSelect(table, params = "") {
-  const r = await fetch(`${SB_URL}/rest/v1/${table}?${params}`, {
-    headers: {
-      "apikey": SB_ANON,
-      "Authorization": `Bearer ${accessToken}`,
-      "Accept": "application/json"
-    }
+async function sbGet(table, qs = "") {
+  const r = await fetch(`${SB_URL}/rest/v1/${table}?${qs}`, {
+    headers: { "apikey": SB_ANON, "Authorization": `Bearer ${token}`, "Accept": "application/json" },
   });
   if (!r.ok) return [];
   return r.json();
 }
 
-async function sbInsert(table, row) {
-  const r = await fetch(`${SB_URL}/rest/v1/${table}`, {
+async function sbUpsert(table, row, conflict) {
+  const r = await fetch(`${SB_URL}/rest/v1/${table}?on_conflict=${conflict}`, {
     method: "POST",
     headers: {
-      "apikey": SB_ANON,
-      "Authorization": `Bearer ${accessToken}`,
+      "apikey": SB_ANON, "Authorization": `Bearer ${token}`,
       "Content-Type": "application/json",
-      "Prefer": "return=minimal"
+      "Prefer": "resolution=merge-duplicates,return=minimal",
     },
-    body: JSON.stringify(row)
+    body: JSON.stringify(row),
   });
   return r.ok;
 }
 
-async function sbUpsert(table, row, onConflict) {
-  const r = await fetch(`${SB_URL}/rest/v1/${table}?on_conflict=${onConflict}`, {
-    method: "POST",
-    headers: {
-      "apikey": SB_ANON,
-      "Authorization": `Bearer ${accessToken}`,
-      "Content-Type": "application/json",
-      "Prefer": "resolution=merge-duplicates,return=minimal"
-    },
-    body: JSON.stringify(row)
-  });
-  return r.ok;
-}
-
-// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════
 // AUTH
-// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════
 document.getElementById("login-btn").addEventListener("click", doLogin);
 document.getElementById("login-pw").addEventListener("keydown", e => { if (e.key === "Enter") doLogin(); });
 document.getElementById("logout-btn").addEventListener("click", doLogout);
-document.getElementById("refresh-btn").addEventListener("click", refreshData);
-document.getElementById("log-bet-btn").addEventListener("click", logBet);
-document.getElementById("form-date").value = new Date().toISOString().split("T")[0];
+document.getElementById("refresh-btn").addEventListener("click", loadAll);
+document.getElementById("log-btn").addEventListener("click", logBet);
+document.getElementById("f-date").value = new Date().toISOString().split("T")[0];
 
-// Check saved session
-const saved = sessionStorage.getItem("kden_token");
-if (saved) {
-  accessToken = saved;
-  const email = sessionStorage.getItem("kden_email") || "";
-  showApp(email);
-}
+// Restore session
+const saved = sessionStorage.getItem("kden_t");
+if (saved) { token = saved; showApp(sessionStorage.getItem("kden_e") || ""); }
 
 async function doLogin() {
   const email = document.getElementById("login-email").value.trim();
   const pw    = document.getElementById("login-pw").value;
   const btn   = document.getElementById("login-btn");
-  const err   = document.getElementById("login-error");
-
+  const err   = document.getElementById("login-err");
   if (!email || !pw) { err.textContent = "Enter email and password."; return; }
-
-  btn.disabled    = true;
-  btn.textContent = "Signing in...";
-  err.textContent = "";
-
+  btn.disabled = true; btn.textContent = "Signing in..."; err.textContent = "";
   const data = await sbAuth(email, pw);
-
-  if (data.error || !data.access_token) {
+  if (!data.access_token) {
     err.textContent = data.error_description || data.msg || "Login failed.";
-    btn.disabled    = false;
-    btn.textContent = "Sign in →";
-    return;
+    btn.disabled = false; btn.textContent = "Sign in →"; return;
   }
-
-  accessToken = data.access_token;
-  sessionStorage.setItem("kden_token", accessToken);
-  sessionStorage.setItem("kden_email", email);
+  token = data.access_token;
+  sessionStorage.setItem("kden_t", token);
+  sessionStorage.setItem("kden_e", email);
   showApp(email);
 }
 
 async function doLogout() {
   await sbSignOut();
-  accessToken = null;
-  sessionStorage.removeItem("kden_token");
-  sessionStorage.removeItem("kden_email");
-  document.getElementById("app").style.display          = "none";
+  token = null;
+  sessionStorage.removeItem("kden_t");
+  sessionStorage.removeItem("kden_e");
+  document.getElementById("app").style.display = "none";
   document.getElementById("login-screen").style.display = "flex";
-  document.getElementById("login-btn").disabled          = false;
-  document.getElementById("login-btn").textContent       = "Sign in →";
+  document.getElementById("login-btn").disabled = false;
+  document.getElementById("login-btn").textContent = "Sign in →";
 }
 
 function showApp(email) {
-  document.getElementById("login-screen").style.display  = "none";
-  document.getElementById("app").style.display           = "block";
-  document.getElementById("user-email-display").textContent = email;
-
-  const tomorrow = new Date();
-  tomorrow.setDate(tomorrow.getDate() + 1);
-  document.getElementById("tomorrow-date").textContent =
-    tomorrow.toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" });
-
+  document.getElementById("login-screen").style.display = "none";
+  document.getElementById("app").style.display = "block";
+  document.getElementById("user-label").textContent = email;
   loadAll();
 }
 
-// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════
 // DATA
-// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════
 async function loadAll() {
-  document.getElementById("app-loading").style.display  = "flex";
-  document.getElementById("app-content").style.display  = "none";
+  document.getElementById("app-loading").style.display = "flex";
+  document.getElementById("app-body").style.display    = "none";
 
   const tomorrow = new Date();
   tomorrow.setDate(tomorrow.getDate() + 1);
   const tStr = tomorrow.toISOString().split("T")[0];
+  const tLabel = tomorrow.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" });
 
-  const [nowcastRows, skipRows, biasRows, alertRows, historyRows] = await Promise.all([
-    sbSelect("nowcast_log", `valid_date=eq.${tStr}&order=created_at.desc&limit=1`),
-    sbSelect("skip_evaluations", `valid_date=eq.${tStr}&order=evaluated_at.desc&limit=1`),
-    sbSelect("seasonal_bias_summary", `source=eq.MOS_MAV&lead_hours=gte.6&lead_hours=lte.36`),
-    sbSelect("skip_evaluations", `order=evaluated_at.desc&limit=10`),
-    sbSelect("bet_outcomes", `order=valid_date.desc&limit=30`),
+  document.getElementById("hero-date").textContent = `Tomorrow · ${tLabel}`;
+
+  const [nowcastRows, skipRows, biasRows, alertRows, histRows] = await Promise.all([
+    sbGet("nowcast_log",          `valid_date=eq.${tStr}&order=created_at.desc&limit=1`),
+    sbGet("skip_evaluations",     `valid_date=eq.${tStr}&order=evaluated_at.desc&limit=1`),
+    sbGet("seasonal_bias_summary",`source=eq.MOS_MAV&lead_hours=gte.6&lead_hours=lte.36`),
+    sbGet("skip_evaluations",     `order=evaluated_at.desc&limit=8`),
+    sbGet("bet_outcomes",         `order=valid_date.desc&limit=25`),
   ]);
 
-  const nowcast = nowcastRows[0] || null;
-  const skipEval = skipRows[0] || null;
+  const nowcast  = nowcastRows[0] || null;
+  const skipEval = skipRows[0]    || null;
 
-  renderNowcast(nowcast, skipEval);
+  renderHero(nowcast, skipEval);
+  renderInputCards(nowcast);
   renderSkipRules(skipEval);
   renderBias(biasRows);
   renderAlerts(alertRows);
-  renderHistory(historyRows);
+  renderBets(histRows);
 
-  document.getElementById("last-updated-ts").textContent =
+  document.getElementById("ts").textContent =
     "Updated " + new Date().toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" });
-  document.getElementById("app-loading").style.display  = "none";
-  document.getElementById("app-content").style.display  = "block";
+
+  document.getElementById("app-loading").style.display = "none";
+  document.getElementById("app-body").style.display    = "block";
 }
 
-function refreshData() { loadAll(); }
-
-// ═══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════
 // RENDER
-// ═══════════════════════════════════════════════════════
-function renderNowcast(n, skipEval) {
-  if (!n) return;
+// ═══════════════════════════════════════════════════
+function renderHero(n, skipEval) {
+  const hero   = document.getElementById("hero");
+  const badge  = document.getElementById("verdict-badge");
+  const vtext  = document.getElementById("verdict-text");
 
-  const hasSkip = skipEval && skipEval.skip_triggered;
-  const badge   = document.getElementById("verdict-badge");
-  document.getElementById("verdict-text").textContent =
-    hasSkip ? "SKIP TODAY" : n.ci_spans > 2 ? "WATCH — WIDE CI" : "BET THIS BUCKET";
-  badge.className = "verdict " + (hasSkip ? "skip" : n.ci_spans > 2 ? "watch" : "go");
+  if (!n) {
+    hero.className = "verdict-hero none fade-up";
+    badge.className = "verdict-badge none";
+    vtext.textContent = "AWAITING DATA";
+    return;
+  }
 
-  document.getElementById("nowcast-temp").innerHTML = `${n.nowcast_f}<span>°F</span>`;
-  document.getElementById("nowcast-meta").textContent =
-    `${n.source || "NWS_GRID"} · ${n.season} season · ${n.n_samples} samples`;
+  const skipped = skipEval && skipEval.skip_triggered;
+  const wide    = n.ci_spans > 2;
+  const state   = skipped ? "skip" : wide ? "watch" : "go";
+
+  hero.className  = `verdict-hero ${state} fade-up`;
+  badge.className = `verdict-badge ${state}`;
+  vtext.textContent = state === "go" ? "BET THIS BUCKET" : state === "skip" ? "SKIP TODAY" : "WATCH — WIDE CI";
+
+  document.getElementById("hero-temp").innerHTML = `${n.nowcast_f}<span class="unit">°F</span>`;
+  document.getElementById("hero-sub").textContent =
+    `${n.source || "NWS_GRID"} · Bias ${n.mean_bias_f >= 0 ? "+" : ""}${n.mean_bias_f}°F · ${n.season} season`;
+
+  document.getElementById("bucket-main").textContent = (n.kalshi_bucket || "—") + "°F";
+  document.getElementById("bucket-adj").textContent  = `Adjacent · 30% → ${n.adj_bucket || "—"}°F`;
+
+  // CI bar
   document.getElementById("ci-range").textContent = `${n.ci_low_f}°F – ${n.ci_high_f}°F`;
+  const lo = n.nowcast_f - 15, span = 30;
+  const pct = v => Math.max(2, Math.min(98, ((v - lo) / span) * 100));
+  document.getElementById("ci-fill").style.left  = pct(n.ci_low_f) + "%";
+  document.getElementById("ci-fill").style.width = (pct(n.ci_high_f) - pct(n.ci_low_f)) + "%";
+  document.getElementById("ci-pin").style.left   = pct(n.nowcast_f) + "%";
 
-  const low = n.nowcast_f - 15;
-  const pct = v => Math.max(0, Math.min(100, ((v - low) / 30) * 100));
-  document.getElementById("ci-fill").style.left   = pct(n.ci_low_f) + "%";
-  document.getElementById("ci-fill").style.width  = (pct(n.ci_high_f) - pct(n.ci_low_f)) + "%";
-  document.getElementById("ci-center").style.left = pct(n.nowcast_f) + "%";
-
-  document.getElementById("primary-bucket").textContent = (n.kalshi_bucket || "—") + "°F";
-  document.getElementById("adj-bucket").textContent     = (n.adj_bucket || "—") + "°F adjacent (30%)";
-  document.getElementById("raw-mos").textContent        = (n.raw_mos_f || "—") + (n.raw_mos_f ? "°F" : "");
-  document.getElementById("bias-applied").textContent   =
-    n.mean_bias_f != null ? (n.mean_bias_f >= 0 ? "+" : "") + n.mean_bias_f + "°F" : "—";
-  document.getElementById("season-val").textContent = n.season || "—";
-  document.getElementById("sample-n").textContent   = n.n_samples ?? "—";
-
-  const p_win = Math.max(0.5, Math.min(0.85, 0.55 + (n.n_samples / 200) - (n.ci_spans - 1) * 0.05));
-  const price = 0.65;
-  const b     = (1 - price) / price;
+  // Kelly
+  const p_win = Math.max(0.5, Math.min(0.82, 0.55 + (n.n_samples / 200) - (n.ci_spans - 1) * 0.05));
+  const price = 0.65, b = (1 - price) / price;
   const k     = Math.max(0, ((p_win * b - (1 - p_win)) / b) / 2);
-
-  document.getElementById("kelly-pct").textContent      = (k * 100).toFixed(1) + "%";
-  document.getElementById("kelly-dollar").textContent   = "$" + Math.round(500 * k);
-  document.getElementById("p-win").textContent          = (p_win * 100).toFixed(0) + "%";
-  document.getElementById("kelly-pct-label").textContent = (k * 100).toFixed(1) + "% of bankroll";
-  document.getElementById("kelly-bar-fill").style.width  = Math.min(100, k * 300) + "%";
+  document.getElementById("kelly-val").textContent    = (k * 100).toFixed(1) + "%";
+  document.getElementById("kelly-dollar").textContent = `$${Math.round(500 * k)} max position`;
 }
 
-const RULE_META = {
-  frontal_passage:    { icon: "🌬️", name: "Active frontal passage",   desc: "Synoptic front ±12h of observation period" },
-  ensemble_spread:    { icon: "📊", name: "GEFS spread >4°F",         desc: "Check Pivotal Weather plumes for KDEN" },
-  convective_outlook: { icon: "⛈️", name: "Convective outlook",       desc: "Convection caps afternoon high, MOS misses it" },
-  chinook_event:      { icon: "🏔️", name: "Chinook / wind event",     desc: "10–15°F above-forecast if chinook active" },
-  high_pop:           { icon: "🌧️", name: "PoP >30%",                desc: "Precipitation suppresses daily high" },
-  low_sample:         { icon: "📉", name: "Bias samples <20",         desc: "Insufficient history for calibrated nowcast" },
-  ci_too_wide:        { icon: "📏", name: "CI spans >2 buckets",      desc: "Uncertainty too wide for reliable edge" },
+function renderInputCards(n) {
+  if (!n) return;
+  document.getElementById("ic-raw").textContent    = (n.raw_mos_f || "—") + (n.raw_mos_f ? "°F" : "");
+  document.getElementById("ic-source").textContent = n.source || "NWS gridded forecast";
+  document.getElementById("ic-bias").textContent   = n.mean_bias_f != null
+    ? (n.mean_bias_f >= 0 ? "+" : "") + n.mean_bias_f + "°F" : "—";
+  document.getElementById("ic-season").textContent = (n.season || "—") + " rolling 60-day mean";
+  document.getElementById("ic-samples").textContent = n.n_samples ?? "—";
+  document.getElementById("ic-sample-note").textContent = n.n_samples < 20
+    ? "⚠ Need 20+ to bet" : "✓ Sufficient for calibration";
+  const p_win = Math.max(0.5, Math.min(0.82, 0.55 + (n.n_samples / 200) - (n.ci_spans - 1) * 0.05));
+  document.getElementById("ic-pwin").textContent = (p_win * 100).toFixed(0) + "%";
+}
+
+const RULE_DEF = {
+  frontal_passage:    { icon: "🌬", name: "Frontal passage",       note: "NWS BOU AFD scan" },
+  ensemble_spread:    { icon: "📊", name: "Ensemble spread >4°F",  note: "Open-Meteo GFS members" },
+  convective_outlook: { icon: "⛈",  name: "Convective outlook",    note: "NWS CO active alerts" },
+  chinook_event:      { icon: "🏔",  name: "Chinook / wind event",  note: "AFD + wind advisories" },
+  high_pop:           { icon: "🌧",  name: "PoP >30%",              note: "NWS afternoon period" },
+  low_sample:         { icon: "📉",  name: "Bias samples <20",      note: "Internal bias log" },
+  ci_too_wide:        { icon: "📏",  name: "CI spans >2 buckets",   note: "Confidence interval" },
 };
 
 function renderSkipRules(skipEval) {
-  const results    = (skipEval && skipEval.results_json) || [];
-  const triggered  = results.filter(r => r.triggered).length;
-  document.getElementById("skip-count").textContent = triggered;
-  const resultMap  = Object.fromEntries(results.map(r => [r.rule_id, r]));
+  const results = (skipEval && skipEval.results_json) || [];
+  const map     = Object.fromEntries(results.map(r => [r.rule_id, r]));
+  const nTriggered = results.filter(r => r.triggered).length;
 
-  document.getElementById("skip-grid").innerHTML = Object.entries(RULE_META).map(([id, meta]) => {
-    const r       = resultMap[id];
-    const isManual = !r && (id === "frontal_passage" || id === "ensemble_spread");
-    const isTrig  = r && r.triggered;
-    const cls     = isTrig ? "triggered" : isManual ? "manual" : r ? "clear" : "manual";
-    const val     = r ? r.value : isManual ? "Check manually" : "Not evaluated yet";
-    const label   = isTrig ? "🚫 TRIGGERED" : isManual ? "MANUAL CHECK" : r ? "✓ CLEAR" : "PENDING";
-    return `<div class="skip-rule ${cls}">
-      <div class="rule-icon">${meta.icon}</div>
-      <div><div class="rule-name">${meta.name}</div><div class="rule-desc">${meta.desc}</div>
-      <span class="rule-value">${val} · ${label}</span></div>
+  document.getElementById("skip-count-label").textContent =
+    nTriggered === 0
+      ? `Skip rules · all clear (${results.length || 7} evaluated)`
+      : `Skip rules · ${nTriggered} triggered`;
+
+  document.getElementById("rules-grid").innerHTML = Object.entries(RULE_DEF).map(([id, def]) => {
+    const r      = map[id];
+    const trig   = r && r.triggered;
+    const warn   = r && r.severity === "warning" && r.triggered;
+    const cls    = trig ? (warn ? "warning" : "triggered") : "ok";
+    const val    = r ? r.value : "Not evaluated yet";
+    const status = trig ? (warn ? "⚠ " : "✗ ") + val : r ? "✓ " + val : "— pending";
+    return `<div class="rule-card ${cls}">
+      <div class="rule-icon">${def.icon}</div>
+      <div>
+        <div class="rule-name">${def.name}</div>
+        <div class="rule-value">${status}</div>
+        <div style="font-family:var(--mono);font-size:9px;color:var(--dim);margin-top:.15rem">${def.note}</div>
+      </div>
     </div>`;
   }).join("");
 }
 
 function renderBias(rows) {
   const seasons = ["DJF","MAM","JJA","SON"];
-  const descs   = {
-    DJF: "Winter · chinook & post-frontal risk",
-    MAM: "Spring · hardest season, front risk",
-    JJA: "Summer · most predictable",
-    SON: "Fall · upslope fog, slight warm bias"
-  };
+  const notes   = { DJF:"Winter · chinook risk", MAM:"Spring · hardest season", JJA:"Summer · predictable", SON:"Fall · upslope bias" };
   const byS = {};
-  rows.forEach(r => {
-    if (!byS[r.season]) byS[r.season] = [];
-    byS[r.season].push(r);
-  });
+  rows.forEach(r => { if (!byS[r.season]) byS[r.season] = []; byS[r.season].push(r); });
 
-  document.getElementById("bias-grid").innerHTML = seasons.map(s => {
+  document.getElementById("bias-row").innerHTML = seasons.map(s => {
     const arr = byS[s];
-    if (!arr) return `<div class="bias-card"><div class="bias-season">${s}</div><div class="bias-val neutral">—</div><div class="bias-n">no data yet</div><div class="bias-desc">${descs[s]}</div></div>`;
-    const avg = arr.reduce((a, b) => a + parseFloat(b.mean_bias_f), 0) / arr.length;
-    const n   = arr.reduce((a, b) => a + parseInt(b.n_samples), 0);
-    const std = arr.reduce((a, b) => a + parseFloat(b.std_bias_f || 2), 0) / arr.length;
-    const b   = avg.toFixed(1);
-    const cls = Math.abs(avg) < 0.5 ? "neutral" : avg < 0 ? "warm" : "cold";
-    return `<div class="bias-card"><div class="bias-season">${s}</div>
-      <div class="bias-val ${cls}">${avg >= 0 ? "+" : ""}${b}°F</div>
+    if (!arr) return `<div class="bias-card"><div class="bias-season">${s}</div><div class="bias-num flat">—</div><div class="bias-n">no data</div><div class="bias-note">${notes[s]}</div></div>`;
+    const avg = arr.reduce((a,b) => a + parseFloat(b.mean_bias_f), 0) / arr.length;
+    const n   = arr.reduce((a,b) => a + parseInt(b.n_samples), 0);
+    const std = arr.reduce((a,b) => a + parseFloat(b.std_bias_f || 2), 0) / arr.length;
+    const cls = Math.abs(avg) < 0.4 ? "flat" : avg > 0 ? "pos" : "neg";
+    const sign = avg >= 0 ? "+" : "";
+    return `<div class="bias-card">
+      <div class="bias-season">${s}</div>
+      <div class="bias-num ${cls}">${sign}${avg.toFixed(1)}°F</div>
       <div class="bias-n">n=${n} · σ=${std.toFixed(1)}°F</div>
-      <div class="bias-desc">${descs[s]}</div></div>`;
+      <div class="bias-note">${notes[s]}</div>
+    </div>`;
   }).join("");
 }
 
 function renderAlerts(rows) {
   if (!rows.length) return;
   document.getElementById("alert-log").innerHTML = rows.map(r => {
-    const ts  = new Date(r.evaluated_at).toLocaleString("en-US", { dateStyle: "short", timeStyle: "short" });
-    const dot = r.skip_triggered ? "red" : r.triggered_count > 0 ? "yellow" : "green";
+    const ts  = new Date(r.evaluated_at).toLocaleString("en-US", { dateStyle:"short", timeStyle:"short" });
+    const dot = r.skip_triggered ? "r" : r.triggered_count > 0 ? "y" : "g";
     const msg = r.skip_triggered
-      ? `🚫 SKIP TRIGGERED · ${r.triggered_count} rule(s) fired${r.email_sent ? " · Alert email sent" : ""}`
-      : r.triggered_count > 0 ? `⚠️ ${r.triggered_count} warning(s) — review skip rules`
-      : `✅ 0 rules triggered · Bet eligible`;
-    return `<div class="alert-item"><div class="alert-dot ${dot}"></div>
-      <div><div class="alert-time">${ts}</div><div class="alert-msg">${msg}</div></div></div>`;
+      ? `🚫 Skip triggered · ${r.triggered_count} rule(s)${r.email_sent ? " · Email sent" : ""}`
+      : r.triggered_count > 0 ? `⚠ ${r.triggered_count} warning(s) — review rules`
+      : `✓ All clear · Bet eligible`;
+    return `<div class="alert-item">
+      <div class="alert-dot ${dot}"></div>
+      <div><div class="alert-ts">${ts}</div><div class="alert-msg">${msg}</div></div>
+    </div>`;
   }).join("");
 }
 
-function renderHistory(rows) {
+function renderBets(rows) {
   if (!rows.length) return;
-  document.getElementById("history-tbody").innerHTML = rows.map(h => {
-    const outcome = (h.outcome || "pending").toLowerCase();
-    const pnl = h.pnl > 0 ? `<span class="pnl-pos">+$${h.pnl}</span>`
-              : h.pnl < 0 ? `<span class="pnl-neg">−$${Math.abs(h.pnl)}</span>` : "—";
+  document.getElementById("bet-tbody").innerHTML = rows.map(h => {
+    const out = (h.outcome || "pending").toLowerCase();
+    const pnl = h.pnl > 0 ? `<span class="pos">+$${h.pnl}</span>`
+              : h.pnl < 0 ? `<span class="neg">−$${Math.abs(h.pnl)}</span>` : "—";
     return `<tr>
       <td>${h.valid_date}</td>
       <td>${h.nowcast_f ? h.nowcast_f + "°F" : "—"}</td>
@@ -608,7 +753,7 @@ function renderHistory(rows) {
       <td>${h.kalshi_bucket || "—"}</td>
       <td>${h.position || "—"}</td>
       <td>${h.entry_price ? "$" + h.entry_price : "—"}</td>
-      <td><span class="outcome-pill ${outcome}">${outcome.toUpperCase()}</span></td>
+      <td><span class="pill ${out}">${out.toUpperCase()}</span></td>
       <td>${pnl}</td>
     </tr>`;
   }).join("");
@@ -616,21 +761,19 @@ function renderHistory(rows) {
 
 async function logBet() {
   const row = {
-    valid_date:    document.getElementById("form-date").value,
-    kalshi_bucket: document.getElementById("form-bucket").value,
-    position:      document.getElementById("form-pos").value,
-    contracts:     parseInt(document.getElementById("form-contracts").value) || null,
-    entry_price:   parseFloat(document.getElementById("form-price").value) || null,
-    official_high: parseInt(document.getElementById("form-actual").value) || null,
-    skip_reason:   document.getElementById("form-skip").value || null,
-    outcome:       document.getElementById("form-pos").value === "SKIP" ? "SKIP" : "PENDING",
+    valid_date:    document.getElementById("f-date").value,
+    kalshi_bucket: document.getElementById("f-bucket").value,
+    position:      document.getElementById("f-pos").value,
+    contracts:     parseInt(document.getElementById("f-qty").value) || null,
+    entry_price:   parseFloat(document.getElementById("f-price").value) || null,
+    official_high: parseInt(document.getElementById("f-actual").value) || null,
+    skip_reason:   document.getElementById("f-skip").value || null,
+    outcome:       document.getElementById("f-pos").value === "SKIP" ? "SKIP" : "PENDING",
   };
-  if (!row.valid_date || !row.kalshi_bucket) { alert("Date and bucket required."); return; }
+  if (!row.valid_date || !row.kalshi_bucket) { alert("Date and bucket are required."); return; }
   const ok = await sbUpsert("bet_outcomes", row, "valid_date");
   if (!ok) { alert("Save failed — check console."); return; }
-  ["form-bucket","form-contracts","form-price","form-actual","form-skip"].forEach(id => {
-    document.getElementById(id).value = "";
-  });
+  ["f-bucket","f-qty","f-price","f-actual","f-skip"].forEach(id => document.getElementById(id).value = "");
   loadAll();
 }
 </script>
